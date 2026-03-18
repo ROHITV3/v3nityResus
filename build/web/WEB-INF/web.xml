@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2004 The Apache Software Foundation
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <display-name>Resus</display-name>
+    <description>V3NITYRESUS</description>
+    <security-constraint>
+        <display-name>web security</display-name>
+        <web-resource-collection>
+            <web-resource-name>view page</web-resource-name>
+            <url-pattern>/Admin/*</url-pattern>
+            <url-pattern>/Common/*</url-pattern>
+            <url-pattern>/List/*</url-pattern>
+            <url-pattern>/Plan/*</url-pattern>
+            <url-pattern>/Report/*</url-pattern>
+            <url-pattern>/System/*</url-pattern>
+            <url-pattern>/Track/*</url-pattern>
+            <url-pattern>/Support/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>none</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <context-param>
+        <param-name>disable/listener/package/v3nity.cust.biz.scheduler</param-name>
+        <param-value>1</param-value>
+    </context-param>
+    <!--
+    <context-param>
+        <param-name>disable/listener/package/v3nity.std.biz.listener</param-name>
+        <param-value>1</param-value>
+    </context-param>
+    -->
+</web-app>

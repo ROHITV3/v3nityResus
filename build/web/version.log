@@ -1,0 +1,578 @@
+Version 3.3.37
+--------------
+- Added dashboards and reports involving TTC, KTC, and GoAhead
+- Added form field video link
+- Customer attributes for TTC auto email
+- Webservices for TrackMe app
+- Changes for OrangeTee
+
+
+Version 3.3.35
+--------------
+- highlight marker during map history tracking
+- preserve history tracking markers when using address search
+- job customer field has been changed to searchable field
+- changed from double click to single click for split map selection
+- fixed my account page to disable editing username field
+
+Version 3.3.34
+------------
+- Shift Vehicle Maintenance to v3nity.std.biz.track (Remember to change the c_menu_data when porting)
+- Vehicle Maintenance now is based on asset from c_asset, remove add and delete button from that page.
+- Shift account_wizard to admin folder
+- Add when creating Asset @ Account Creation Wizard & Asset Page, it will automatically add this asset to the Vehicle Maintenance Page
+- Fix Static Image title not showing in PDF
+
+
+Version 3.3.33
+------------
+- Fix Google map showing error.
+- Fix PDF Job Report Text not bold.
+- Fix CSV export header not in correct column issue
+
+
+Version 3.3.32
+------------
+- Fix CSV export data not correct column issue
+- Edit Cluster Location Logic and added new filtering option
+- Change Menu UI mouseover back to click event.
+
+
+Version 3.3.31
+------------
+- Change Account Creation Wizard default password
+- Improve the efficiency of last location result output.
+- Change cluster location backend logic
+
+
+Version 3.3.30
+-------------
+- Fix dashboard chart not appearing
+- Change Menu UI
+- Add Reset Menu Instance at System Setup
+- Change back user initial page after login to be job schedule if user can view job schedule page
+- Alert Assignment menu now required user to choose the asset before searching
+- Change Static Image Form Field not to resize to a standard 400, 300 when adding at the job schedule page
+- Change Static Image PDF output.
+- Fix Last Location Geofence Issue.
+- Fix WAM auto email send function not working. (Not fully fix, unable to carter to use other font) (see JobscheduleController)
+- Fix textarea not populating when edit and not clearing when saved at list.jsp
+- Add Distance Journey Summary Report
+- Added TOS and Privacy Policy VN Translation
+- Added VN UserManual PDF (Note to self : Remember to go into database(c_menu) and remove the ".pdf" at the back of the URL)
+- Commented the reading & sending of Notice.html at Login Controller (This function is replaced with the verison log pop up for now)
+
+Version 3.3.29
+-------------
+- Fix Job Report Preview Translation Issue
+- Fix Daily Report & Movement Report Unable to open
+- Fix Job Schedule Page Lag Issue
+- Change Version Log styling and logic
+
+Version 3.3.28
+-------------
+- When one of Split Map is selected at map, zoom to marker will only take effect on selected map
+- Add User Manual download to the menu
+- Change User Access TreeView to output Customer - User instead of Group - User
+- Change Job Report Template System Field Staff
+- Add Latitude and Longitude to Track History
+
+Version 3.3.27
+-------------
+- Fix google chrome downloading csv error of "failed -- network error"
+- Added version log pop up message upon login
+- Fix Journey Report error
+- Fix PDF translation issue
+
+Version 3.3.26
+-------------
+- Fix Track History not showing additional details for RFID Tag Detected Event
+- Fix certain columns not showed in csv download
+- Add additional daily report function
+- Add new fleet preventive maintenance
+- Add reverse geocoding function to gps
+- Fix Device Location table
+
+Version 3.3.25
+-------------
+- Fix Language Translation not working
+
+Version 3.3.24
+-------------
+- Fix map geofence color not showing at the side menu
+- Add Daily Report
+- Add Track History filtering options.
+- Fix Job Import schedule date not going according to user time zone
+- Schedule Button will not appear if the status are STARTED or ENDED
+- Fix Email not sending out when job completed at mobile
+
+Version 3.3.23
+-------------
+- Fixed 1:2 Map not showing label and icon
+
+Version 3.3.22
+-------------
+- Change cluster dashboard logic
+- Dashboard now refresh itself every 3 minutes when there are asset selected
+- Fixed rescheduling jobs issue.
+- Change Staff/Driver Sorting
+
+Version 3.3.21
+-------------
+- Add Vehicle Maintenance Page
+- Fixed the Fleet Safety Summary
+- Send down additional refresh rate interval to WAM 3
+- Fix some words translate error to other language
+
+Version 3.3.20
+-------------
+- Edit User Log Module
+- Add new Cluster Dashboard
+- Log user login and logout
+- Add back split map individual asset selection function
+
+Version 3.3.19
+-------------
+- Add model field in Asset
+- Edit cluster location tracking dashboard
+
+Version 3.3.18
+-------------
+- Fix error message when user save form without customer name at job schedule page
+- Add new summary page at FMS app
+- Map now show immobilise status for vehicle
+- Added Ignition Chart to show total hours of ignition on hours within user selected timeline
+- Search box in tree view to be fix at the top in some pages.
+- Add new cluster location tracking dashboard
+
+Version 3.3.17
+-------------
+- Added Copy function for Job Schedule.
+- Fix unable to download CSV file after clicking PDF download button (Beside Search Button) at job schedule page.
+- Change job schedule csv to carter for html data type.
+- Fix created_dt not appearing from job import for different time zone user.
+- Temporary remove split map individual asset selection function
+
+Version 3.3.16
+-------------
+- Edit GeoFenceOccurence Dashboard logic
+- Inserted logic to handle staff list and job handover data in AssetController
+- Fix geofence overlapping in map
+- Add User Base Access Module
+- Fix event name issue at public map
+
+Version 3.3.15
+-------------
+- Map changes to include textbox for split map
+- Edit CSV download for some field.
+
+Version 3.3.14
+-------------
+- Enable bluetooth function for adhoc jobs
+- Fix Session Timeout pop up.
+- Change push notification address for iOS configuration
+- Fix cube report not filtering and unable to download csv
+- Change Jobschedule default created_dt as according to user timezone set in the account
+- Map.jsp changes
+
+Version 3.3.13
+-------------
+- Add telematics analysis dashboard
+- Add Movement Report
+- Set 1 minute refresh at FMS lite when choosing asset.
+
+Version 3.3.12
+-------------
+- Add additional pattern column to hotspot table
+- Change hotspot web service in asset controller
+- Add TOW event id into Event.Java
+- Change AssetController (mobile login) web service to send additional wifi attribute down.
+- Change MapController to include additional event of hotspot
+
+Version 3.3.11
+-------------
+- Add "Hotspot" Event
+- Add Dashboard Job Progress Chart
+- Add Dashboard Job Schedule Chart
+- Add Dashboard Job Duration Chart
+- Add Dashboard Productivity Trend Chart
+- Geofence can only delete one at a time
+- Map can be split into 2 or 4 parts. (Can only toggle geofence and asset)
+
+
+Version 3.3.10
+-------------
+- Fix Job Creation message show failed but job had been created.
+- Fix Barcode number not showing after user submit from mobile
+- Prevent lite customer from adding more than 3 Geo Fence at map.
+- Fixed Tonnage and Job Summary Reports
+
+Version 3.3.9
+-------------
+- Added CameraLibrary formfield and hide IconCheckbox form field.
+- Edited Beacon form field preview output
+- asset marker will appear topmost when hovered. (clear browser cache required)\
+- Added Preview option to report template.
+
+Version 3.3.8
+-------------
+- fix pictures in PDF report overlapping issue.
+- updated parameters for max days to search (31 --> 60) and max #entries (20,000 --> 100,000)
+- added optimization result resource view UI
+- removed logs for email sending
+- changed idling icon for mobile fms
+- updated rating form to include 0 value
+- added version update text at login page.
+- added Beacon and IconCheckBox formfield
+
+Version 3.3.7
+-------------
+- added auto report generator function
+
+Version 3.3.6
+-------------
+- added customer list module to report and import template
+- fixed alert assignment event filtering
+- fixed track history event filtering
+- fixed paging / sorting issue with job optimization tables
+- updated tonnage report
+
+Version 3.3.5
+-------------
+- support permanent hidding custom icon label
+- fixed map display custom icon
+- added customer table
+- fixed asset attribute issue during map tracking
+- prevent marker labels from covering any of the markers
+
+Version 3.3.4
+-------------
+- update mobile FMS 3 for login
+- support toggling on/off for map label
+- fixed downloading issue with csv exceeding maximum record
+- fixed track history search problem
+- fixed temperature chart
+
+Version 3.3.3
+-------------
+- Fixed role search issue
+- Implemented address search field
+- Added function to download all images in job (resource-based)
+- Removed timestamp in report for gallery form field
+- WAM users will be redirected to Job Schedule Page by default instead of Map Page
+- updated mobile (fms lite) journey report event detail to show icon instead of text
+- fixed chart NaN exception
+
+Version 3.3.2
+-------------
+- fixed temperature chart report
+- Fixed sub-customer staff not showing in main-customer user job schedule filter
+
+Version 3.3.1
+--------------
+- Added alphabet sorting for asset in behavioural_report.jsp
+- set default page to map
+- fixed fuel chart report
+- unnecessary job status are removed from job status chart
+- fixed track history geofence detection
+
+Version 3.3.0
+--------------
+- Added Fleet Safety Summary Report Details
+- Enable disabling of job scheduling by resource settings
+- Added UI for Job Auto Recurring
+- Fixed grouping issues in parent hierarchy
+- Reduced the approximation getting the address geocoding
+- Added DASHBOARD_PTO_SAFETY_VIOLATION in V3Nity Resource to update the role access matrix
+- Added the description of attached rfid asset in the live tracking map
+- Added Import Auto-Recurring Job function with predefined settings
+- Added Optimization UI
+
+Version 3.2.29
+--------------
+- Fixed corrupted PDF attachment in email upon job completion
+- Change distance calculation from longitude, latitude to mileage in Journey Report.
+- Change the maximum capacity for uploading to 20 for camera and gallery function in the job.
+- Added Add, Edit, Delete function for gallery in job.
+- Supports custom icon markers on the map
+
+Version 3.2.28
+--------------
+- fixed map data loading issue when history data is empty
+- fixed journey summary report mileage problem
+- fixed session timeout dialog to move user to expired.jsp upon session expired.
+- added optimization UI
+
+Version 3.2.27
+--------------
+- Added function to download report with/without Geotag (restriction: only for photos taken and submitted directly using mobile)
+- Added customer list for autocomplete function in mobile
+- Added number-keypad data type
+
+Version 3.2.26
+--------------
+- fixed geofence occurence count dashboard
+- fixed user account updates tracking device
+
+Version 3.2.25
+--------------
+- added column hiding for last location report
+- added geofence name for last location report
+- added history line for history tracking
+- added setting default auto zoom option
+- added hide 50 and above markers label in the live tracking map
+
+Version 3.2.24
+--------------
+- Edit Journey Report to show mileage on both V3Nity FMS Lite and V3Nity Web Portal.
+- Deleted extra colons and added new roles in PDF labels
+- Fixed "Rating Sub Total" showing extra row in PDF report
+- Fixed adhoc job creation at mobile phone where null appearing at description field
+
+Version 3.2.23
+--------------
+- add new function dynamic camera
+- Fix adhoc job creation at mobile phone
+- reorder columns for last location
+- Fixed form fields with Preview attribute checked not updating when edited.
+- Fixed form checkbox items not updating boolean when unchecked.
+- Added capturing of driver's login status
+- Fixed signature not showing in PDF report if user did not sign at Mobile Phone.
+- Added details field for geo fence criteria
+
+Version 3.2.22
+--------------
+- tooltip display in tree-view items
+- support custom pages and themes
+- csv header is now language formatted
+
+Version 3.2.21
+--------------
+- Filter by Start Date only will now filter for entries between 00:00 and 23:59 on specified date
+- Fixed issue with location info and job description not replicated for recurring jobs
+- added geofence count dialog on the map
+- added events
+- added prevention of scheduling same job multiple times
+
+Version 3.2.20
+--------------
+- update hierachical customer design
+- fixed updating customer will not update its parent id
+
+Version 3.2.19
+--------------
+- add system logging for api calls
+- implemented push notification for job schedule
+
+Version 3.2.18
+--------------
+- Fix PDF "Multiple Files from Filter" Download where output is 0KB.
+- limited date range for history playback to 24 hours
+
+Version 3.2.17
+--------------
+- "Started" jobs and "Uploading" jobs in the Job Schedule page can now be ended if the user have the permission rights
+- improvement of the UI to indicate if the PDF in Job Schedule page have been downloaded before (green coloured PDF button indicates the PDF has been downloaded)
+- Individual PDF Download filename format is now 'jobId_templateName [scheduledDate]'
+- Added session timeout popup dialog to warn user.
+- Fix job schedule form drawing & signature function image corrupted if user did not edit at mobile.
+- "Scheduled" jobs and "Received" jobs in the Job Schedule page can now be ended if the user have the permission rights
+- Fix datatable issue with force end job and disable cancel button
+- reduce limit of date range search to 31 days.
+- fixed journey summary report
+
+Version 3.2.16
+--------------
+- implemented FMS lite version
+- fixed reverse geocode location
+- fixed admin access to show password field
+- fixed PDF download button at Job Schedule Page where pdf downloaded is unable to open (corrupted)
+- fixed Job Schedule form, camera function where user unable to add new image for new form created
+
+Version 3.2.15
+--------------
+- change history tracking source
+- fixed job schedule form, camera function :
+    1.adding new image error
+    2.timestamp appearing in PDF when "Hide Image Date" and "Hide Image Time" were ticked
+- removed fillLevel from LocationDataHandler updateLocation because the parameter is invalid
+
+Version 3.2.14
+--------------
+- fixed error of company logo appearing twice in PDF report header
+- support clustering of map markers for live tracking
+
+Version 3.2.13
+--------------
+- fixed error creating job in job schedule page
+- refined filtering options in job schedule page
+- refined copy form template automatically copy report template
+
+Version 3.2.12
+--------------
+- increased the length of title field
+- increased the length of multiline field
+- allow image and gallery fields to be able to edit the size of the photos and alignment
+- adjusted the map marker anchor point
+
+Version 3.2.11
+--------------
+- fixed job schedule zip file export
+- added main power voltage in last location and track history
+
+Version 3.2.10
+--------------
+- changed default zoom level for tracking
+- history marker now shows timestamp on mouse hover event
+- clickable history marker to zoom to item in slider
+- fixed editable cell in the data table
+- added role access to show user password
+- added role access to show user admin fields
+- fixed track settings
+
+Version 3.2.9
+-------------
+- fixed problem with getting image geocode during job upload
+- added edit photo function for camera field
+- added configurable overlay map layers
+- added job update status with asset id
+- changed default zoom level for tracking
+
+Version 3.2.8
+-------------
+- added auto fit for camera image sizing in report template
+- fixed problem with editing form and value disappeared after saving. applies selection field
+- fixed last location location column loading issue
+
+Version 3.2.7
+-------------
+- added copy feature for form and report template
+- added prompt for deletion on report template clear table function
+- web alert will display event messages later than login time
+- report template supports title style
+- report template supports page margin
+- report template supports page break
+
+Version 3.2.6
+-------------
+- implemented access control for geofence drawing
+- implemented access control for route drawing
+
+Version 3.2.5
+-------------
+- implemented date, time, and date-time pickers form fields in pdf report
+- geofence will not be draggable or editable unless the edit button is clicked
+
+Version 3.2.4
+-------------
+- language map now access from application context
+- system configuration now access from application context
+- system upgrade for application versioning
+
+Version 3.2.3
+-------------
+- added configuration for map type for static map in track history
+- added configuration for map refresh interval
+- added description field for job schedule record
+- change map ip address to domain name
+
+Version 3.2.2
+-------------
+- added group color
+
+Version 3.2.1
+-------------
+- opimization engine
+- added public api for optimization
+- fixed bugs on creating new job
+- added merging of columns feature
+- support hiding map layers in the customer settings
+- removed colon when no title detected
+
+Version 3.2.0
+-------------
+- changed default image size to 50% in Job Report Template
+- recurring module
+- removed numbering on photos in report
+- fixed duplication records in journey summary report
+
+Version 3.1.9
+-------------
+- fixed signature & drawing displaying issues
+
+Version 3.1.8
+-------------
+- added date and time picker form fields
+- added report font styling and alignment
+- support report generation to show all checkboxes fields
+- support report generation to show all radiobuttons options
+- added image size selection for camera,signature,drawing to report generation
+- support report template to insert new row under selected row
+- support report template to delete selected row
+- fixed import template by prefixing fields from csv
+- fixed import template by increasing user field name from 50 to 200 characters
+- added public api
+- added asset api
+
+Version 3.1.7
+-------------
+- provision new api
+
+Version 3.1.6
+-------------
+- support profile template for staff and asset
+- form field image now will only scale if image is smaller than specified size
+- implemented event column CSV download
+- accidentally moved geofence allows undo by unchecking and checking the geofence
+- added compute function under job template
+- fixed heading now include south west in the last location
+- added fill chart under Track tab
+- fixed public map restriction problem
+- fixed the public map startup time
+
+Version 3.1.5
+-------------
+- fixed limit label size problem
+- fixed "others" search filter for job schedule
+- implemented session expired and unauthorized access pages
+- implemented session expired for csv download
+- support pressing escape key for closing pop up dialog
+- job email now support SSL/TLS
+
+Version 3.1.4
+-------------
+- support geofence editing
+- data logging for IOT
+- fixed saving problem for alert criteria
+- allow date and time for specfic selection in alert criteria
+- implemented drawing form field
+
+Version 3.1.3
+-------------
+- PTO safety violation dashboard
+
+Version 3.1.2
+-------------
+- fixed group selection causing multiple assets in the list (caused by pressing cross button)
+- fixed showing deleted asset in the alert assignment
+- show form menu title when form field is selected
+- asset controller geofence api supports customer id
+- asset controller gps api now default to send data to comm server
+
+Version 3.1.1
+-------------
+- fixed track settings to show staff name
+- fixed geofence double entry saving
+- fixed alert assignment to show records when all events selected
+- fixed report template and import template to show editor
+
+Version 3.1.0
+-------------
+- health dashboard
+- utilization dashboard
+- driver safety dashboard
+- support email job report from mobile
+
+Version 3.0.0
+-------------
+- initial release

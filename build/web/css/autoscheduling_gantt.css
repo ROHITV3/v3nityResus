@@ -1,0 +1,1168 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 May, 2020, 1:20:19 PM
+    Author     : Christopher
+*/
+
+.timeframe
+{
+    float: left;
+    margin-right: 20px;
+    
+    background: #555555 !important;
+    /*border-color: #000 !important;*/
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    
+    text-align: center;
+    color: #fff;
+    
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(138,43,43,1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(138,43,43,1);
+    box-shadow: 2px 2px 5px 0px rgba(138,43,43,1);
+    
+    cursor: pointer;
+}
+
+.timeframe:hover
+{
+    background: #ac1010 !important;
+}
+
+.tf-selected
+{
+    background: #000 !important;
+}
+
+.search-icon{
+    float: left;
+    width: 45px;
+    height: 45px;
+
+    background: url("../img/ic_search_rounded.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+
+    cursor: pointer;
+}
+
+.search-icon:hover{
+    background: url("../img/ic_search_hover.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+.search-icon:active{
+    background: url("../img/ic_search_clicked.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+
+
+#main-container, clock-container{
+    float: left;
+    width: 100%;
+    height: 700px;
+    /*background: #000;*/
+    /*overflow-y: scroll;*/
+}
+
+#category-container{
+    float: left;
+    width: 150px;
+    /* should we add max-height? */
+    margin: 10px;
+    margin-top: 0px;
+    background: #990000;
+    color: #fff;
+}
+
+
+#vehicle-container{
+    float: left;
+    width: 200px;
+    height: 100%;
+    /* should we add max-height? */
+    margin: 10px;
+    margin-left: 0px;
+    margin-top: 0px;
+    color: #fff;
+}
+
+
+
+.single-category{
+    float: left;
+    clear: both;
+    width: 100%;
+    background: #333;
+    box-shadow: 
+        0 1px 2px #fff, /*bottom external highlight*/
+        0 -1px 1px #666, /*top external shadow*/ 
+        inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/ 
+        inset 0 2px 2px rgba(255,255,255,0.8); /*top internal highlight*/
+    
+    cursor: pointer;
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+.single-category:hover{
+    background: #000;
+}
+
+.cat-box
+{
+    float: left;
+    width: 30px;
+    height: 30px;
+
+    background: url("../img/box-empty.png") no-repeat;
+    background-position: center; 
+    background-size: 60%;
+}
+
+.cat-box:hover
+{
+    background: url("../img/box-hover.png") no-repeat;
+    background-position: center; 
+    background-size: 60%;
+}
+
+.cat-selected
+{
+    background: url("../img/box-selected.png") no-repeat;
+    background-position: center; 
+    background-size: 60%;
+}
+
+.cat-desc
+{
+    float: left;
+    
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+}
+
+.cat-vehicles{
+    float: left;
+    width: 200px;
+    background: #437dc6;
+    padding: 5px;
+    height: auto;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #777;
+}
+
+
+.cat-single-veh
+{
+    float: left;
+    background: #274972;
+    height: 40px;
+    width: 100%;
+    padding: 3px;
+    padding-top: 2px;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    cursor: default;
+/*    border-color: #274972;
+    border-style: solid;*/
+}
+
+.single-veh-hoverable{
+    cursor: pointer;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+.single-veh-hoverable:hover{
+    background: #000;
+}
+
+.veh-label{
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.veh-driver{
+    height: 15px;
+    line-height: 15px;
+    font-size: 12px;
+}
+
+#timeline-hourly{
+    /*float: left;*/
+    width: auto;
+    height: 100%;
+    /*background: #000 !important;*/
+    overflow-y: scroll;
+    
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#timeline-daily{
+    /*float: left;*/
+    width: auto;
+    height: 100%;
+    /*background: #000 !important;*/
+    overflow-y: scroll;
+    
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#timeline-monthly{
+    /*float: left;*/
+    width: auto;
+    height: 100%;
+    background: #000 !important;
+    overflow-y: scroll;
+    
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+
+#timeline::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#timeheader-hourly{
+    /*float: left;*/
+    width: auto;
+    height: 100%;
+    /*background: #000 !important;*/
+    overflow: hidden;
+}
+
+#timeheader-daily{
+    /*float: left;*/
+    width: auto;
+    height: 100%;
+    background: #000 !important;
+    overflow: hidden;
+}
+
+#timeheader-monthly{
+    /*float: left;*/
+    width: auto;
+    height: 100%;
+    background: #000 !important;
+    overflow: hidden;
+}
+
+/*
+    Generic overlap classes
+*/
+.overlapping{
+    float: left;
+    /*margin-top: 15px;*/
+    width: 100%;
+    /*height: 90%;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.spacer-category{
+    float: left;
+    height: 40px;
+    width: 100%;
+/*    background: #fff;
+    opacity: 0.5;*/
+}
+
+
+#time-hourly-div{
+    float: left;
+    /*margin-left: 380px;*/
+    width: 100%;
+    height: 40px;
+}
+
+#time-daily-div{
+    float: left;
+    /*margin-left: 380px;*/
+    width: 100%;
+    height: 40px;
+}
+
+#time-monthly-div{
+    float: left;
+    /*margin-left: 380px;*/
+    width: 100%;
+    height: 40px;
+}
+
+
+/*
+    Overlap layer 1 - vertical lines that indicate time
+        More of a box with border.
+*/
+.stb{
+    display: inline-block;
+    width: 192px;
+    height: 800px;
+    /*background: #183029;*/
+    /*margin-top: 10px;*/
+    border-style: solid;
+    border-color: #999;
+    border-width: 0px 0px 1px 1px;
+}
+
+.withright{
+    border-right-width: 1px;
+}
+
+
+/*
+    Overlap layer 2 - time (xx:xx) next to each vertical line
+*/
+.time{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 192px;
+    /*padding-left: 5px;*/
+    font-size: 16px;
+    color: #437dc6;
+}
+
+/*
+    Overlap layer 3 - the horizontal line that extends for eternity
+*/
+.single-horizontal-line{
+    float: left;
+    height: 2px;
+    margin-top: 24px;
+    margin-bottom: 19px;
+    width: 100%;
+    opacity: 1.0;
+    background: #437dc6;
+}
+
+
+/*
+    Overlap layer 4 - jobs
+*/
+.single-vehicle-job{
+    float: left;
+    height: 45px;
+    width: 2400px;
+}
+
+#jobs-div, #jobs-div-daily, #jobs-div-monthly{
+    float: left;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+#jobs-div::-webkit-scrollbar, #jobs-div-daily::-webkit-scrollbar, #jobs-div-monthly::-webkit-scrollbar { 
+    display: none;
+}
+
+
+.job-box{
+    float: left;
+    height: 35px;
+    margin-top: 7.5px;
+    background: #88695b;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 1px;
+    
+    cursor:pointer;
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+.job-box:hover{
+    background: #000;
+}
+
+.job-box-manual{
+    background: #000099 !important;
+}
+
+.job-box-adhoc{
+    background: #88695b !important;
+}
+
+.job-text{
+    float: left;
+    padding: 3px;
+    white-space: nowrap;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 10px;
+    color: #fff;
+}
+
+.job-blank{
+    float: left;
+    height: 40px;
+    margin-top: 7.5px;
+    border-radius: 5px;
+}
+
+
+
+
+.popup-div{
+    border: 1px solid white;
+    width: 180px;
+    height: auto;
+    display: none;
+    background: #bbb;
+    position:absolute;
+    z-index: 100;
+    
+    font-size: 10px;
+}
+
+
+
+
+
+.change-month{
+    float: left;
+    width: 40px;
+    height: 160px;
+}
+
+
+.month-cal{
+    float: left;
+    width: 140px;
+    height: 160px;
+}
+
+
+.change-month-icon{
+    float: left;
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+
+.change-year{
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+
+.change-year-icon{
+    float: left;
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+.left-icon{
+    background: url("../img/arrow-left.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+.left-icon:hover{
+    background: url("../img/arrow-left-red.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+.right-icon{
+    background: url("../img/arrow-right.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+.right-icon:hover{
+    background: url("../img/arrow-right-red.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+.month-label{
+    text-align: center;
+    border: 0px;
+    border-top: 1px;
+    border-color: #000;
+    border-style: solid;
+    height: 20px;
+    line-height: 20px;
+    width: 140px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.day-box{
+    float:left;
+    /*background: #000;*/
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    color: #000;
+    font-size: 10px;
+    text-align: center;
+}
+
+.all-dates{
+    float: left;
+    height: 120px;
+    width: 140px;
+    background: #444;
+}
+
+.week-line{
+    float: left;
+    width: 140px;
+    height: 20px;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+    
+    cursor: pointer;
+}
+
+.week-line:hover{
+    background: #000;
+}
+
+.wl-selected{
+    background: #d00e0e;
+}
+
+
+.date-box{
+    float:left;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+    text-align: center;
+    
+    color: #fff;
+}
+
+
+.day{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 105px;
+    /*padding-left: 5px;*/
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+    background: #4c575f;
+    color: #fff;
+    
+    cursor: pointer;
+}
+
+.day:hover{
+    background: #ac1010;
+}
+
+
+.week{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    width: 105px;
+    /*padding-left: 5px;*/
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    background: #4c575f;
+    color: #fff;
+    
+    cursor: pointer;
+}
+
+.week:hover{
+    background: #ac1010;
+}
+
+.weekend{
+    background: #8b8b8b;
+}
+
+.sdb, .smb{
+    display: inline-block;
+    width: 105px;
+    height: 800px;
+    /*background: #183029;*/
+    /*margin-top: 10px;*/
+    border-style: solid;
+    border-color: #999;
+    border-width: 0px 0px 1px 1px;
+}
+
+
+.single-monthly-jobs{
+    float: left;
+    background: #ccc;
+    width: 61px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 22px;
+    margin-right: 22px;
+    color: #AC1010;
+    line-height: 40px;
+    
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    
+    cursor: default;
+}
+
+
+.single-daily-jobs{
+    float: left;
+    background: #444;
+    width: 104px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 1px;
+}
+
+.single-daily-jobs:hover{
+    /*background: #fff;*/
+}
+
+.no-jobs{
+    background: none;
+}
+
+.no-jobs:hover{
+    background: none;
+}
+
+.single-daily-job-box{
+    float: left;
+    background: #dd0000;
+    width: 15px;
+    height: 15px;
+    margin: 2.5px 0px 2px 5px;
+    
+    border: 1px;
+    border-style: solid;
+    border-color: #770000;
+}
+
+.daily-extra{
+    float: left;
+    color: #dd0000;
+    height: 15px;
+    line-height: 15px;
+    margin: 2.5px 0px 2px 5px;
+    
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/*
+    Reschedule Dialog
+*/
+
+#rd-customer-info{
+    float: left;
+    width: 100%;
+    min-height: 80px;
+    max-height: 150px;
+    
+    overflow-y: scroll;
+    font-size: 18px;
+    
+    padding: 5px;
+}
+
+.rd-line{
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 1px;
+    background: #000;
+}
+
+#rd-curr-assg{
+    float: left;
+    clear: both;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#rd-reschedule-assg{
+    float: left;
+    clear: both;
+    font-size: 16px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#rd-veh-date{
+    float: left;
+    clear: both;
+    font-size: 20px;
+}
+
+#rd-timeslot-info{
+    float: left;
+    margin-top: 10px;
+    clear: both;
+    font-size: 20px;
+    color: green;
+}
+
+.slot-unavailable{
+    color: red !important;
+}
+
+.btn-unavailable{
+    background: #999 !important;
+    border-color: #ccc !important;
+}
+
+#rd-existing-jobs-info{
+    float: left;
+    clear: both;
+    width: 100%;
+    min-height: 80px;
+    max-height: 250px;
+    /*background: #00cc00;*/
+    overflow-y: scroll;
+}
+
+.rd-single-job{
+    float: left;
+    margin: 5px 0px 10px 0px;
+    /*background: #cc0000;*/
+    width: 90%;
+    height: 50px;
+    font-size: 16px;
+}
+
+.available{
+    background: #E1FAE1;
+}
+
+.unavailable{
+    background: #FAE1E1;
+}
+
+.rd-job-icon{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-left: -5px;
+
+    background: url("../img/btn_map.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+
+    cursor: pointer;
+}
+
+.rd-job-icon:hover{
+    background: url("../img/btn_map_hover.png") no-repeat;
+    background-position: center; 
+    background-size: 80%;
+}
+
+.rd-job-time{
+    float: left;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    /*background: #999;*/
+    font-weight: bold;
+}
+
+.rd-job-customer{
+    float: left;
+    margin-left: 20px;
+    height: 50px;
+    line-height: 50px;
+    /*background: #999;*/
+}
+
+
+#notification{
+    float: right;
+    margin-right: 20px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    /*background: #002939;*/
+    
+    background: url("../img/bell_jobs.png") no-repeat;
+    background-position: center; 
+    background-size: 100%;
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+#notification:hover{
+    background: url("../img/bell_hover.png") no-repeat;
+    background-position: center; 
+    background-size: 100%;
+}
+
+#num-jobs{
+    float: right;
+    font-size: 12px;
+    background: #000;
+    color: #fff;
+    font-weight:bold;
+    border-radius: 30%;
+    padding: 2px;
+    margin-right: -2px;
+}
+
+#notification-div{
+    /*float: right;*/
+    background: #ccc;
+    
+    display: none;
+    max-height: 300px;
+    width: 300px;
+    overflow-y: scroll;
+    
+    position:absolute;
+    z-index: 10;
+}
+
+.single-notif{
+    height: 55px;
+    padding: 5px;
+    border-width: 1px 0px 0px 0px;
+    border-style: solid;
+    cursor: pointer;
+    
+    -webkit-transition:background 0.2s;
+    -moz-transition:background 0.2s;
+    -o-transition:background 0.2s;
+    transition:background 0.2s;
+}
+
+.single-notif:hover{
+    background: #990000;
+    color: #fff;
+}
+
+.notif-customer{
+    height: 20px;
+    line-height:20px;
+    font-weight: bold;
+    font-size: 14px;
+    
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.notif-address{
+    height: 12px;
+    line-height:12px;
+    font-size: 10px;
+    
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.notif-contract{
+    height: 12px;
+    line-height:10px;
+    font-size: 12px;
+}
+
+
+/*
+    these below are used for daily scheduling
+*/
+
+
+.daily-order-box{
+    float: left;
+    height: 100px;
+    width: 1150px;
+    background: #cefbdb;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.daily-order-column{
+    float: left;
+    height: 100px;
+    width: 120px;
+    /*background: #009900;*/
+}
+
+.daily-order-column-170{
+    float: left;
+    height: 100px;
+    width: 170px;
+    /*background: #009900;*/
+}
+
+.daily-order-label{
+    float: left;
+    clear: both;
+    margin-top: 10px;
+    height: 10px;
+    line-height: 10px;
+    width: 120px;
+    font-size: 10px;
+}
+
+.daily-order-input{
+    float: left;
+    clear: both;
+    width: 120px;
+    margin-top: 2px;
+}
+
+.daily-order-input-150{
+    float: left;
+    clear: both;
+    width: 150px;
+    margin-top: 2px;
+}
+
+.daily-order-jso{
+    float: left;
+    clear: both;
+    margin-top: 10px;
+    height: 15px;
+    line-height: 15px;
+    width: 150px;
+    font-size: 14px; 
+}
+
+.daily-order-customer{
+    float: left;
+    clear: both;
+    margin-top: 10px;
+    height: 18px;
+    line-height: 18px;
+    width: 150px;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.daily-order-spacer{
+    float: left;
+    height: 100px;
+    width: 20px;
+    /*background: #009900;*/
+}
+
+
+.daily-order-update{
+    float: left;
+    height: 60px;
+    width: 100px;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 10px;
+    border-color: #000000;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    line-height: 55px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.daily-order-update:hover{
+    color: #fff;
+    background: #000;
+    cursor: pointer;
+}
+
+.box-error{
+    background: #FAE1E1;
+}
+
+.input-error{
+    border: 2px solid #ff0000;
+}
+
+#orders-info{
+    font-size: 22px;
+    margin-bottom: 0px;
+}
+
+
+
+#jobs-container{
+    float: left;
+    width: 10px;
+    /* should we add max-height? */
+    margin: 10px;
+    margin-top: 0px;
+    /*background: #990000;*/
+    color: #fff;
+    
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 480px;
+}
+
+.single-job{
+    margin-top: 5px;
+    float: left;
+    clear: both;
+    width: 100%;
+    background: #009900;
+    box-shadow: 
+        0 1px 2px #fff, /*bottom external highlight*/
+        0 -1px 1px #666, /*top external shadow*/ 
+        inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/ 
+        inset 0 2px 2px rgba(255,255,255,0.8); /*top internal highlight*/
+    
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+    
+    cursor: pointer;
+}
+
+.single-job:hover{
+    background: #000;
+}
+
+.single-job-customer{
+    float:left;
+    clear:both;
+    font-size: 12px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 3px 3px 0px 3px;
+    
+}
+
+
+.single-job-addr{
+    float:left;
+    clear:both;
+    margin: 1px 3px 3px 3px;
+    font-size: 10px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.job-with-issue{
+    background: #990000;
+}
+
+.daily-button{
+    float: left;
+    color: #fff;
+    margin-left: 40px;
+    width: 120px;
+    height: 40px;
+    line-height: 35px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    
+    font-size: 16px;
+    font-weight: bold;
+    
+    cursor: pointer;
+    -webkit-transition:background 0.3s;
+    -moz-transition:background 0.3s;
+    -o-transition:background 0.3s;
+    transition:background 0.3s;
+}
+
+.daily-button:hover{
+    
+    background: #000 !important;
+}
+
+.daily-button-disabled{
+    cursor: auto;
+    background: #999 !important;
+}
+
+.daily-button-disabled:hover{
+    background: #999 !important;
+}
+    

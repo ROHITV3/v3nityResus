@@ -1,0 +1,231 @@
+            .toolbarCustom {
+                position: relative;
+            }
+
+            .toolbarCustom:before, .toolbarCustom:after {
+                display: table;
+                content: "";
+            }
+
+            .toolbarCustom:after {
+                clear: both;
+            }
+
+            .toolbarCustom .toolbarCustom-button {
+                padding: 0 1rem;
+                height: 2.125rem;
+                background-color: #ffffff;
+                border: 1px #d9d9d9 solid;
+                color: #262626;
+                cursor: pointer;
+                display: inline-block;
+                outline: none;
+                font-size: .875rem;
+                line-height: 1;
+                margin: .15625rem 0;
+                position: relative;
+                width: 2.125rem;
+                min-width: 2.125rem;
+                padding: 0;
+                border-radius: 50%;
+                text-align: center;
+                text-decoration: none;
+                vertical-align: middle;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .toolbarCustom .toolbarCustom-button.default {
+                background-color: #008287;
+                color: #fff;
+            }
+
+            .toolbarCustom .toolbarCustom-button:hover {
+                border-color: #787878;
+            }
+
+            .toolbarCustom .toolbarCustom-button:active {
+                background: #eeeeee;
+                color: #262626;
+                box-shadow: none;
+            }
+
+            .toolbarCustom .toolbarCustom-button:focus {
+                outline: 0;
+            }
+
+            .toolbarCustom .toolbarCustom-button:disabled, .toolbarCustom .toolbarCustom-button.disabled {
+                background-color: #eaeaea;
+                color: #bebebe;
+                cursor: default;
+                border-color: transparent;
+            }
+
+            .toolbarCustom .toolbarCustom-button * {
+                color: inherit;
+            }
+
+            .toolbarCustom .toolbarCustom-button *:hover {
+                color: inherit;
+            }
+
+            .toolbarCustom .toolbarCustom-button.rounded {
+                border-radius: .325rem;
+            }
+
+            .toolbarCustom .toolbarCustom-button > [class*=mif-] {
+                vertical-align: middle;
+            }
+
+            .toolbarCustom .toolbarCustom-button img {
+                height: .875rem;
+                vertical-align: middle;
+                margin: 0;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-pulse {
+                position: relative;
+                padding: 0 1.325rem;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-pulse:before {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 50%;
+                margin-top: -10px;
+                width: 20px;
+                height: 20px;
+                background-color: #333;
+                border-radius: 100%;
+                -webkit-animation: scaleout 1s infinite ease-in-out;
+                animation: scaleout 1s infinite ease-in-out;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-pulse.lighten:before {
+                background-color: #fff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-cube {
+                position: relative;
+                padding: 0 1.325rem;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-cube:before, .toolbarCustom .toolbarCustom-button.loading-cube:after {
+                content: "";
+                background-color: #333;
+                width: 5px;
+                height: 5px;
+                position: absolute;
+                top: 50%;
+                left: 3px;
+                margin-top: -8px;
+                -webkit-animation: cubemove 1.8s infinite ease-in-out;
+                animation: cubemove 1.8s infinite ease-in-out;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-cube:after {
+                -webkit-animation-delay: -0.9s;
+                animation-delay: -0.9s;
+            }
+
+            .toolbarCustom .toolbarCustom-button.loading-cube.lighten:before, .toolbarCustom .toolbarCustom-button.loading-cube.lighten:after {
+                background-color: #fff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.dropdown-toggle {
+                padding-right: 1.625rem;
+            }
+
+            .toolbarCustom .toolbarCustom-button.dropdown-toggle.drop-marker-light:before, .toolbarCustom .toolbarCustom-button.dropdown-toggle.drop-marker-light:after {
+                background-color: #ffffff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.primary {
+                background: #2086bf;
+                color: #ffffff;
+                border-color: #2086bf;
+            }
+
+            .toolbarCustom .toolbarCustom-button.primary:active {
+                background: #1b6eae;
+                color: #ffffff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.success {
+                background: #60a917;
+                color: #ffffff;
+                border-color: #60a917;
+            }
+
+            .toolbarCustom .toolbarCustom-button.success:active {
+                background: #128023;
+                color: #ffffff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.danger, .toolbarCustom .toolbarCustom-button.alert {
+                background: #ce352c;
+                color: #ffffff;
+                border-color: #ce352c;
+            }
+
+            .toolbarCustom .toolbarCustom-button.danger:active, .toolbarCustom .toolbarCustom-button.alert:active {
+                background: #9a1616;
+                color: #ffffff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.info {
+                background: #59cde2;
+                color: #ffffff;
+                border-color: #59cde2;
+            }
+
+            .toolbarCustom .toolbarCustom-button.info:active {
+                background: #1ba1e2;
+                color: #ffffff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.warning {
+                background: #fa6800;
+                color: #ffffff;
+                border-color: #fa6800;
+            }
+
+            .toolbarCustom .toolbarCustom-button.warning:active {
+                background: #bf5a15;
+                color: #ffffff;
+            }
+
+            .toolbarCustom .toolbarCustom-button.link {
+                background: transparent;
+                color: #2086bf;
+                border-color: transparent;
+                text-decoration: underline;
+            }
+
+            .toolbarCustom .toolbarCustom-button.link:hover, .toolbarCustom .toolbarCustom-button.link:active {
+                background: transparent;
+                color: #114968;
+                border-color: transparent;
+            }
+
+            .toolbarCustom .toolbarCustom-button.big-button {
+                width: 3.125rem;
+                height: 3.125rem;
+                line-height: 1.1;
+            }
+
+            .toolbarCustom .toolbarCustom-button.mini-button {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+
+            .toolbarCustom .toolbarCustom-button.small-button {
+                width: 1.7rem;
+                height: 1.7rem;
+            }
+
+            .toolbarCustom .toolbarCustom-button.large-button {
+                width: 2.55rem;
+                height: 2.55rem;
+            }

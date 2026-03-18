@@ -1,0 +1,83 @@
+
+.v3-bg-blue {
+    background-color: #437DC6 !important;
+    color: #fff !important;
+}
+
+.v3-bg-blue-darker {
+    background-color: #244775 !important;
+    color: #fff !important;
+}
+
+.v3-bg-lightBlue {
+    background-color: #75AFF8 !important;
+    color: #000 !important;
+}
+
+.v3-bg-lighterBlue {
+    background-color: #DBEAFF !important;
+    color: #fff !important;
+}
+
+.v3-bg-darkBlue {
+    background-color: #114B94 !important;
+    color: #fff !important;
+}
+
+.v3-bg-lightGray {
+    background-color: #eeeeee !important;
+    color: #000 !important;
+}
+
+.v3-bg-darkGray {
+    background-color: #535353 !important;
+    color: #fff !important;
+}
+
+.v3-bg-darkerGray {
+    background-color: #151515 !important;
+    color: #fff !important;
+}
+
+.v3-bg-okButton {
+    background-color: #75AFF8 !important;
+    color: #fff !important;
+}
+
+.v3-bg-cancelButton {
+    background-color: #ce352c !important;
+    color: #fff !important;
+}
+.v3-fg-blue {
+    color: #437DC6 !important;
+}
+
+.v3-fg-lightBlue {
+    color: #75AFF8 !important;
+}
+
+.v3-fg-lighterBlue {
+    color: #DBEAFF !important;
+}
+
+.v3-fg-darkBlue {
+    color: #114B94 !important;
+}
+
+.v3-border-gray {
+    border: 1px solid #d9d9d9 !important;
+}
+
+/* override metro switch for uncheck state */
+.switch .check {
+    background-color: #535353 !important;
+}
+
+/* override metro switch for check state */
+.switch input:checked ~ .check {
+    background-color: #437DC6 !important;
+}
+
+.charm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}

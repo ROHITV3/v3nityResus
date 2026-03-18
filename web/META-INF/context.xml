@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/v3nityResus">
+    <Resource
+        auth="Container"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        initialSize="10"
+        logAbandoned="true"
+        maxActive="100"
+        maxIdle="30"
+        maxWait="10000"
+        minEvictableIdleTimeMillis="30000"
+        minIdle="10"
+        name="jdbc/v3nityResus"
+        password="devdb368324"
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        type="javax.sql.DataSource"
+        url="jdbc:sqlserver://192.168.254.50:1433;databaseName=v3nityResus"
+        username="v3sqluser"/>
+</Context>

@@ -1,0 +1,272 @@
+/*
+    this is a customized css for starhub...
+*/
+
+.cover-image {
+    background-image: url('../tps/ktc-cover.jpg');
+    background-color: #fff;
+    padding: 8px;
+    width: 100%;
+}
+
+.cover-image:after {
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+.center-panel {
+    position: fixed;
+    border-radius: 32px;
+    box-shadow: 5px 16px 16px #545454;
+    background-color: #fff;
+    color: #000;
+    top: 50%;
+    left: 50%;
+    height: 524px;
+    width: 480px;
+    margin-top: -280px;
+    margin-left: -240px;
+    padding: 16px 32px;
+}
+
+.v3nity-logo {
+    display: none;
+}
+
+.v3nity-logo-custom {
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-image: url('../tps/ktc-logo.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 195px;
+}
+
+.v3nity-app-name:before {
+    content: 'Transport Planning System';
+    font-size: 32px;
+}
+
+.v3nity-app-company:before {
+    content: 'Powered by V3 Smart Technologies Pte. Ltd. fka V3 Teletech Pte. Ltd.';
+}
+
+.title-bar {
+    background-color: #e5191a !important;
+}
+
+.app-bar.v3nity {
+    background-color: #b31011;
+}
+
+.app-bar.v3nity .app-bar-element:hover,
+.app-bar.v3nity .app-bar-menu > li:hover,
+.app-bar.v3nity .app-bar-menu > li > a:hover,
+.app-bar.v3nity .app-bar-element:active,
+.app-bar.v3nity .app-bar-menu > li:active,
+.app-bar.v3nity .app-bar-menu > li > a:active {
+    background-color: #e5191a;
+}
+
+.app-bar.v3nity .app-bar-divider {
+    background-color: #e5191a;
+}
+
+.app-bar.v3nity .app-bar-element .d-menu,
+.app-bar.v3nity .app-bar-menu > li .d-menu {
+    background-color: #b31011;
+    border-color: transparent;
+}
+
+.app-bar.v3nity .app-bar-element .d-menu li:not(.disabled) > a,
+.app-bar.v3nity .app-bar-menu > li .d-menu li:not(.disabled) > a,
+.app-bar.v3nity .app-bar-element .d-menu li > a,
+.app-bar.v3nity .app-bar-menu > li .d-menu li > a {
+    background-color: #b31011;
+    color: #ffffff;
+}
+
+.app-bar.v3nity .app-bar-element .d-menu li:not(.disabled) > a:hover,
+.app-bar.v3nity .app-bar-menu > li .d-menu li:not(.disabled) > a:hover,
+.app-bar.v3nity .app-bar-element .d-menu li > a:hover,
+.app-bar.v3nity .app-bar-menu > li .d-menu li > a:hover {
+    background-color: #e5191a;
+    color: #ffffff;
+}
+
+.app-bar.v3nity .app-bar-element .d-menu li:hover > a,
+.app-bar.v3nity .app-bar-menu > li .d-menu li:hover > a {
+    background-color: #e5191a;
+}
+
+.app-bar.v3nity .app-bar-element .d-menu .divider,
+.app-bar.v3nity .app-bar-menu > li .d-menu .divider {
+    background-color: #e5191a;
+}
+
+.app-bar.v3nity .app-bar-element .d-menu .divider:hover,
+.app-bar.v3nity .app-bar-menu > li .d-menu .divider:hover {
+    background-color: #b31011;
+}
+
+.app-bar.v3nity .app-bar-element .dropdown-toggle:before,
+.app-bar.v3nity .app-bar-menu li .dropdown-toggle:before {
+    border-color: #ffffff;
+}
+
+.app-bar.v3nity .app-bar-element.disabled,
+.app-bar.v3nity .app-bar-menu li.disabled,
+.app-bar.v3nity .app-bar-element:disabled,
+.app-bar.v3nity .app-bar-menu li:disabled {
+    color: #555555;
+}
+
+.app-bar.v3nity .app-bar-element.disabled a,
+.app-bar.v3nity .app-bar-menu li.disabled a,
+.app-bar.v3nity .app-bar-element:disabled a,
+.app-bar.v3nity .app-bar-menu li:disabled a {
+    color: inherit !important;
+}
+
+.app-bar.v3nity .app-bar-pullbutton:hover {
+    background-color: #e5191a;
+}
+
+.app-bar.v3nity .app-bar-drop-container {
+    border: 2px solid #b31011;
+    background-color: #b31011;
+    color: #ffffff;
+}
+
+.app-bar.v3nity .app-bar-drop-container:before {
+    background-color: #b31011;
+    border-color: #b31011;
+}
+
+.app-bar.v3nity .app-bar-pullmenu .app-bar-menu {
+    border-top: 1px solid #b31011;
+    background-color: #b31011;
+}
+
+.app-bar.v3nity .app-bar-pullmenu .app-bar-menu li:hover {
+    background-color: #b31011;
+}
+
+.app-bar.v3nity .app-bar-pullmenu .app-bar-menu li:hover a {
+    background-color: #e5191a;
+    color: #ffffff;
+}
+
+.app-bar .app-bar-pullmenu .app-bar-menu .d-menu {
+    background-color: #b31011 !important;
+    border-top: 1px solid #b31011 !important;
+}
+
+.app-bar .app-bar-menu > li:hover, .app-bar .app-bar-menu > li > a:hover, .app-bar .app-bar-menu > li:active, .app-bar .app-bar-menu > li > a:active {
+    background-color: #e5191a;
+}
+
+.app-bar .app-bar-pullmenu .app-bar-menu li:hover a {
+    background-color: #e5191a !important;
+    color: #ffffff !important;
+}
+
+.app-bar .app-bar-pullmenu .app-bar-menu li:hover {
+    background-color: #e5191a !important;
+}
+
+.d-menu li a img, .d-menu li a .icon {
+    color: #fff !important;;
+}
+
+.dashboard-section-title {
+    background-color: #e5191a;
+}
+
+.button.primary {
+    background-color: #e5191a;
+    border-color: #e5191a;
+}
+
+.button.primary:active {
+    background-color: #e5191a;
+}
+
+#central-panel-update {
+    background-color: #e5191a !important;
+}
+
+.dataTable tr.selected td {
+    background-color: #BD2223 !important;
+    color: #fff !important;
+}
+
+.dataTable td.selected {
+    background-color: #b31011 !important;
+    color: #fff !important;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
+    border-radius: 50%;
+    background-color: #b31011;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+    background-color: #b31011;
+}
+table.dataTable.dtr-column > tbody > tr > td.control:before,
+table.dataTable.dtr-column > tbody > tr > th.control:before {
+    background-color: #b31011;
+}
+table.dataTable.dtr-column > tbody > tr.parent td.control:before,
+table.dataTable.dtr-column > tbody > tr.parent th.control:before {
+    background-color: #b31011;
+}
+
+.dataTables_paginate .paginate_button.current, .dataTables_paginate .paginate_button.active {
+    background-color: #b31011;
+    border-color: #920000;
+}
+
+.AnyTime-pkr * {
+    font-size: x-small !important;
+    font-weight: normal !important;
+}
+
+.AnyTime-win {
+    background-color: #fff !important;
+    border: 1px solid #D7D7D7 !important;
+    box-shadow: 5px 8px 8px #858585;
+}
+
+.AnyTime-pkr .AnyTime-hdr {
+    background-color: #b31011 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+.AnyTime-pkr .AnyTime-cur-btn {
+    background-color: #b31011 !important;
+}
+
+.AnyTime-pkr .AnyTime-lbl {
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+.AnyTime-pkr .AnyTime-x-btn {
+    color: #fff !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+.AnyTime-pkr th.AnyTime-dow {
+    background-color: #6e6f70 !important;
+}
+
+.list-show-result-control {
+    display: none !important;
+}

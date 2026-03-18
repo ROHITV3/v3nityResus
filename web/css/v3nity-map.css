@@ -1,0 +1,459 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Aug 31, 2015, 5:58:23 PM
+    Author     : kevin
+*/
+
+section {
+    margin: 0;
+    padding: 8px;
+}
+
+.full-screen {
+    position: fixed;
+    padding: 0 !important;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.half-screen {
+    position: relative;
+    float:left;
+    width: 50%;
+    height: 100%;
+}
+.quarter-screen {
+    position: relative;
+    float:left;
+    width: 50%;
+    height: 50%;
+}
+.half-screen.selected, .quarter-screen.selected {
+    border: 2px solid #ff3333;
+}
+.mapInputBox {
+    top:10px;
+    right: -10px;
+    left: 0;
+    margin: auto;
+    position:absolute;
+    width:85%;
+    height:40px;
+    font-size:30px;
+}
+
+.mapInput {
+    text-align:center;
+    width:90%;
+    height:100%;
+    float:left;
+    border:0px;
+    border-right: 1px #3C70B2 solid;
+    visibility: hidden;
+    font-weight: bold;
+}
+
+#mapInputButton {
+    opacity:0.8;
+    border:0px;
+    height:100%;
+    width:5%;
+    margin: 0px;
+    float: left;
+    font-weight: bold;
+    color:#3C70B2 !important;
+    z-index:9999;
+}
+
+#mapInputButton:hover {
+    opacity:1 !important;
+}
+
+#map-view, #map1-view, #map2-view, #map3-view {
+    width: 100%;
+    height:100%;
+}
+#mapOutDiv {
+    padding: 1px;
+}
+#map1OutDiv {
+    padding: 1px;
+}
+#map2OutDiv {
+    padding: 1px;
+}
+#map3OutDiv {
+    padding: 1px;
+}
+
+.setting-block {
+    width: 100%;
+    margin: 48px 0;
+}
+
+.slide-quote {
+    color: #fff;
+    margin: 0;
+    padding: 8px;
+    width: 188px;
+    height: 80px;
+    text-align: left;
+}
+
+.slide-quote:hover {
+    cursor: pointer;
+}
+
+.slick-current {
+    border: 1px dotted #fff;
+}
+
+#playback-slider {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 0;
+    height: 84px;
+    width: 100%;
+}
+
+#playback-slider-control {
+    background-color: #fff;
+    height: 56px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+/* turn off the default controls */
+.leaflet-control {
+    display: none !important;  /* disable by kevin!!! */
+}
+
+/* replace the tile background */
+.leaflet-container {
+    background-image: url("../img/empty-tile.png") !important;   /* kevin did this!!! */
+}
+
+/* inherited marker with label for asset tracking */
+.leaflet-marker-label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    display: block;
+    background-color: #437DC6;
+    box-shadow: 0 1px 7px rgba(0,0,0,0.3);
+    color: #fff;
+    font-size: small;
+    margin: 0;
+    overflow: hidden;
+    padding: 2px;
+    text-align: center;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 20px;
+    width: 84px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.leaflet-marker-label.auto-width {
+    width: auto;
+}
+
+.leaflet-marker-label-history {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    display: block;
+    background-color: #000;
+    color: #fff;
+    font-size: x-small;
+    margin: 0;
+    overflow: hidden;
+    padding: 1px 2px;
+    text-align: center;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 16px;
+    width: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.map-icon-marker {
+    border-radius: 50%;
+    border: 2px solid #fff;
+    font: normal 20px Arial !important;
+    color: #fff;
+    text-align: center !important;
+    vertical-align: middle !important;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+
+.map-icon-marker:before {
+    content: "\2191";
+}
+
+.map-icon-marker.small {
+    font: normal 11px Arial !important;
+    border-width: 1px;
+    width: 16px;
+    height: 16px;
+}
+
+.map-icon-marker-custom {
+    background-size: cover;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.map-icon-marker-custom.small {
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+}
+
+.map-icon-marker:hover {
+    border-color: #254974;
+    -webkit-box-shadow: 0px 0px 24px #254974;
+    -moz-box-shadow: 0px 0px 24px #254974;
+    box-shadow: 0px 0px 24px #254974;
+    z-index: 999;
+}
+
+.map-icon-marker.nohover{
+    font: normal 12px Arial !important;
+    width:16px;
+    height:16px;
+}
+
+.map-icon-marker.nohover:hover {
+    border-color: #fff;
+    -webkit-box-shadow: 0px 0px 0px #254974;
+    -moz-box-shadow: 0px 0px 0px #254974;
+    box-shadow: 0px 0px 0px #254974;
+}
+
+.map-icon-marker.moving, .event-moving {
+    background-color: #2186FF;
+}
+
+.map-icon-marker.idling, .event-idling {
+    background-color: #FFBC00;
+}
+
+.map-icon-marker.ignitionoff, .event-ignitionoff {
+    background-color: #9C9C9C;
+}
+
+.map-icon-marker.standing, .event-standing {
+    background-color: #323232;
+}
+
+.map-icon-marker.stop, .event-stop {
+    background-color: #F00000;
+}
+
+.map-icon-marker.immobilise, .event-immobilise {
+    background-color: #9966ff;
+}
+
+.map-icon-marker.selected {
+    border-color: #000 !important;
+    -webkit-box-shadow: 0px 0px 24px #000;
+    -moz-box-shadow: 0px 0px 24px #000;
+    box-shadow: 0px 0px 24px #000;
+    z-index: 999;
+}
+
+ul.address-block {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.address-block li {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: block;
+    margin: 16px 0;
+    padding: 0;
+    vertical-align: top;
+    width: 100%;
+}
+
+ul.address-block a {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    outline: 0;
+    position: relative;
+    text-decoration: none;
+}
+
+ul.address-block li a:hover {
+    background: #0D4C80;
+}
+
+ul.address-block p:first-of-type {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+ul.address-block p {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+
+}
+
+.legend-dialog {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: auto;
+    padding: 4px 8px;
+}
+
+.geofence-dialog {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 264px;
+    padding: 0 1px;
+}
+
+ul.geofence-dialog-asset {
+    background-color: rgba(255, 255, 255, 0.2);
+    list-style: none;
+    font-size: 0px;
+    height: 280px;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+ul.geofence-dialog-asset li {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    margin: 0;
+    padding: 4px;
+    font-size: 14px;
+    vertical-align: top;
+    text-align: left;
+    width: 33.3%;
+    word-wrap: break-word;
+}
+
+.geofence-dialog-close-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 24px;
+}
+
+:-moz-placeholder {
+    color: #a7aabc;
+}
+
+::-webkit-input-placeholder {
+    color: #a7aabc;
+}
+
+.map-footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: block;
+    font-size: smaller !important;
+    height: auto;
+    width: 100%;
+    padding: 4px;
+    position: fixed;
+    font-size: inherit;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+.map-marquee {
+    background-color: rgba(255, 225, 255, 0.4);
+    color: #000;
+    display: inline-block;
+    font-weight: 600 !important;
+    height: 20px;
+    width: 100%;
+    padding: 2px;
+    position: fixed;
+    font-size: inherit;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+div.traffic-feed {
+    margin: 0 8px;
+    padding: 0;
+}
+
+div.traffic-feed span {
+    margin: 0 32px;
+}
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display: none;
+}
+
+.gm-bundled-control-on-bottom {
+    top: 164px !important;
+}
+
+div.map-tooltip {
+    position: fixed; /* depends on how it handles the e.pageX and e.pageY.. */
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: #437DC6;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    padding: 4px;
+    z-index: 10;
+    display: none;
+}
+
+
+.map-icon-staff-marker{
+    background-color: transparent;
+    background-image: url('../img/marker-user-moving.png');
+    border-width: 0px;
+    border-radius: 0;
+    width: 32px !important;
+    height: 32px !important;
+    margin-left: -5px;
+    margin-top: -10px;
+}

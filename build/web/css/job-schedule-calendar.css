@@ -1,0 +1,202 @@
+
+#mainContainer{
+    float: left;
+    margin-left: 0px;
+    
+    width: 1200px;
+    height: 800px;
+    
+    /*background-color: #ccc;*/
+}
+
+#topContainer{
+    float: left;
+    margin-top: 5px;
+    width: 1200px;
+    height: 60px;
+    
+    /*background-color: #009900;*/
+}
+
+#topLeftBlank{
+    float: left;
+    width: 200px;
+    height: 61px;
+    
+    background-color: #000;
+}
+
+#dayDateContainer{
+    float: left;
+    width: 1000px;
+    height: 60px;
+    
+    /*background-color: #009999;*/
+}
+
+#dayNameContainer{
+    float: left;
+    /*width: 1000px;*/
+    height: 30px;
+    background-color: #000;
+}
+
+#dateContainer{
+    float: left;
+    clear: both;
+    /*width: 1000px;*/
+    height: 31px;
+    background-color: #000;
+}
+
+    .dayDate{
+        float: left;
+        width: 29px;
+        height: 29px;
+        line-height: 30px;
+        margin-right: 1px;
+        margin-top: 1px;
+
+        font-family: "Segoe UI", "Open Sans", serif;
+        font-size: 16px;
+        text-align: center;
+        background-color: #eee;
+        color: #000;
+    }
+    
+
+#bottomContainer{
+    float: left;
+    margin-top: 3px;
+    width: 1200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 700px;
+    
+    /*background-color: #009900;*/
+}
+
+    .singleEntry{
+        float: left;
+        height: 29px;
+        width: 1200px;
+        margin-top: 1px;
+    }
+    
+    .aName{
+        float: left;
+        height: 29px;
+        line-height: 29px;
+        width: 200px;
+        padding-left: 10px;
+        
+        text-overflow: ellipsis;
+        overflow: hidden; 
+        white-space: nowrap;
+        background-color: #000;
+        
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    .allMarkers{
+        float: left;
+        width: 1000px;
+        height: 30px;
+        
+    }
+    
+    .aMarker{
+        float: left;
+        width: 29px;
+        height: 29px;
+        line-height: 29px;
+        margin-right: 1px;
+        
+        background-color: #bbb;
+        text-align: center;
+    }
+    
+    .orangeBox{
+        background-color: #FF8C00;
+        color: #fff;
+    }
+    
+    .redBox{
+        background-color: #990000;
+        color: #fff;
+    }
+    
+    .greenBox{
+        background-color: #009900;
+        color: #fff;
+    }
+    
+    .restDay{
+        background-color: #000;
+    }
+    
+    .leaveDay{
+        background-color: #AA0000;
+    }
+    
+    .sunday{
+        background-color: #F08080;
+    }
+    
+    .normalDay{
+        background-color: #fff;
+    }
+    
+    
+.add-box{
+                float: left;
+                clear: both;
+                height: 30px;
+                padding: 5px;
+                color: #000;
+                
+                border-radius: 5px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #aaa;
+                
+                background: #ddd;
+                margin-top: 10px;
+                
+                -webkit-transition:background 0.3s;
+                -moz-transition:background 0.3s;
+                -o-transition:background 0.3s;
+                transition:background 0.3s;
+                
+            }
+            
+        .single-add{
+            float: left;
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-left: 3px;
+            margin-right: 5px;
+        } 
+
+        .add-icon{
+            float: left;
+            width: 20px;
+            height: 20px;
+
+            background: url("../img/settings.png") no-repeat;
+            background-position: center; 
+            background-size: 80%;
+
+            cursor: pointer;
+        }
+
+    .add-box:hover{
+        color: #fff;
+        background: #437DC6;
+        cursor: pointer;
+    }
+            

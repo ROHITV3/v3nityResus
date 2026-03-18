@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 22, 2016, 12:05:14 PM
+    Author     : kevin
+*/
+.import-fields {
+    width: 100%;
+}
+
+.import-field {
+    margin: 8px 0;
+}
+
+.import-field input {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+    color: #000;
+    outline: none;
+    padding: 4px;
+    width: 64px;
+    margin-right: 16px;
+}
+
+.import-field input[type="file"], .import-field input[type="hidden"] {
+    height: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+.import-field input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    display: inline-block;
+    height: 22px;
+    margin-right: 8px;
+    padding: 4px;
+    vertical-align: middle;
+    width: 22px;
+}
+
+.form-sheet input:focus {
+    border: 1px solid #808080;
+}
+
+.form-sheet input::-webkit-input-placeholder {
+    color: #808080;
+}
+
+.form-sheet input:-moz-placeholder {
+    color: #808080;
+}
+
+.form-sheet input::-moz-placeholder {
+    color: #808080;
+}
+
+.form-sheet input:-ms-input-placeholder {
+    color: #808080;
+}

@@ -1,0 +1,199 @@
+/*
+Copyright (C) V3 Smart Technologies. All Rights Reserved.
+
+NOTICE:  Proprietary and confidential. This is the Intellectual Property
+of V3 Smart Technologies Pte Ltd and is not to be used, disclosed or
+duplicated, either in part or in entirety except with the written approval
+of V3 Smart Technologies Pte Ltd.
+*/
+/*
+    Created on : 26 Sep, 2017, 8:45:35 AM
+    Author     : Kevin
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200');
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+* {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+input:-webkit-autofill {
+    border: none;
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
+
+input:focus,
+input:-webkit-autofill:focus {
+    border-color: inherit;
+}
+
+.login-cover {
+    background-color: #437DC6;
+    margin: 0;
+}
+
+.login-title {
+    color: #fff;
+    font-size: 32px;
+    margin-top: 64px;
+    margin-bottom: 32px;
+    padding: 16px;
+    text-align: center;
+}
+
+.login-panel {
+    background-color: #fff;
+    border: none;
+    border-radius: 16px;
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 16px;
+    width: 100%;
+}
+
+.login-input {
+    background-color: #fff;
+    border: none;
+    display: inline-block;
+    color: #000;
+    font-size: 18px;
+    padding: 16px;
+    width: 100%;
+}
+
+.login-input.underline {
+    border-bottom: 1px solid #eee;
+}
+
+.login-button {
+    background-color: #437DC6;
+    border: none;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 100%;
+}
+
+.footer {
+    background-color: inherit;
+    bottom: 0;
+    color: #fff;
+    display: block;
+    left: 0;
+    position: fixed;
+    font-size: 14px;
+    padding: 8px;
+    text-align: center;
+    width: 100%;
+}
+
+.menu-title-bar {
+    background-color: #437DC6;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.content-view {
+    background-color: #fff;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.dialog-panel {
+    background-color: #275590;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.dialog-title {
+    background-color: #275590;
+    color: #fff;
+    font-size: 24px;
+    margin: 0;
+    padding: 16px 16px 8px 8px;
+    width: 100%;
+}
+
+.app-bar {
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.drop-down-selection {
+    background-color: #437DC6;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 16px;
+    width: 100%;
+}
+
+.data-field-table {
+    margin: 1px 0;
+    width: 100%;
+}
+
+.data-field-table td {
+    height: 72px;
+}
+
+.data-field-cell {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    margin: 0;
+    padding: 8px 4px;
+    height: 100%;
+    width: 100%;
+}
+
+.data-field.title {
+    background-color: transparent;
+    color: #b8d7ff;
+    display: block;
+    font-size: 10px;
+    margin: 0;
+    padding: 8px 0;
+    height: auto;
+    text-transform: uppercase;
+}
+
+.data-field.value {
+    background-color: transparent;
+    display: block;
+    font-size: 18px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.data-field-button {
+    background-color: #437DC6;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+}

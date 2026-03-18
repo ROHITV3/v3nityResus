@@ -1,0 +1,322 @@
+#button-run-optimization
+{
+    background-color: #d46e15; 
+    color:#fff; 
+    font-weight: bold;
+}
+#dialog-header
+{
+    width: 100%; 
+    background: #3b6dab; 
+    color: #fff; 
+    float: left;
+}
+.form-dialog-content.optimize
+{
+    margin-top: 75px; 
+    margin-left: 0; 
+    margin-right: 0;
+}
+#dates-container
+{
+   background: #437dc6; 
+}
+#job-summary
+{
+    float: left;
+    height: 300px;
+}
+#summary
+{
+    padding-left: 15px; 
+    max-height: 550px;
+    overflow-y: scroll;
+    border: 1px solid #eeeeee;
+}
+#summary::-webkit-scrollbar 
+{
+    width: 0px; 
+    background: transparent;
+}
+#summary-content
+{
+    margin:5px;
+}
+.panel
+{
+   padding-top: 10px; 
+}
+.panel .heading
+{
+    background: #437dc6; 
+    text-align: center; 
+    height: 35px
+}
+.singleDate
+{
+    float: left;
+    background: #437DC6;
+    color: #fff;
+    width: fit-content;
+    padding: 10px;
+}
+.unassigned
+{
+    background: #bc1a1d;
+}
+
+.dateSelected
+{
+    background: #000;
+    font-weight: bold;
+}
+
+.staffSelected
+{
+    color: #ffffff;
+    font-weight: bold;
+}
+.timetable
+{
+    max-height: 800px; 
+    overflow-y: scroll; 
+    border: 1px solid #eeeeee; 
+    margin-left: 15px;
+}
+.timetable::-webkit-scrollbar 
+{
+    width: 0px; 
+    background: transparent;
+}
+.timetable aside li:hover
+{
+    background-color: #437DC6;
+    position: static;
+    font-weight: bold;
+}            
+.timetable aside li.staffSelected
+{
+    background-color: #437DC6;
+    font-weight: bold;
+}
+.timetable aside a
+{
+    color: #383838;
+}
+#collapsible-table
+{
+    width:100%; 
+    background: #3598db; 
+    color: #fff; 
+    border-top: solid 2px #fff;
+}
+th
+{
+    color: #52677a;
+    font-weight: bold;
+    text-align: left;
+}
+.job-status
+{
+    min-width: 0px;
+    border-radius: 5px;
+}
+.job-status.selected 
+{
+    background-color: #ffa128 !important;
+    color: #fff !important;
+}
+.job-status:hover 
+{
+    background-color: #ffa128 !important;
+}
+#resource-map
+{
+    height: 540px;
+}
+#schedule-alert
+{
+    width: auto;
+    height: auto;
+    padding: 0 50px 25px 50px;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #d46e15;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #d46e15;
+    cursor: pointer;
+
+}
+.container {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #d46e15;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.dialog.small 
+{
+    /*height: 50% !important;*/
+    /*top: 25% !important;*/
+}
+
+#inner-containter {
+
+     overflow: hidden;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    overflow-y: scroll;
+    max-height:600px;
+    position: relative;
+  }
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 13px;
+  text-align: left;
+}
+  
+/*.header-icon-btn
+{
+    float: left; 
+    width: 80px; 
+    height: 80px; 
+    background-color: #990099; 
+    margin-top: 10px;
+}*/
+
+#header-gantt
+{
+    float: left; 
+    width: 40px; 
+    height: 40px; 
+    background: #87cefa url("../img/ic_gantt.png") no-repeat; 
+    margin-top: 20px; 
+    margin-left: 20px;
+    border-radius: 10px;
+    background-position: center;
+    background-size: 60%;
+    cursor: pointer;
+}
+
+#header-gantt:hover
+{
+    background: #000 url("../img/ic_gantt_white.png") no-repeat; 
+    background-position: center;
+    background-size: 60%;
+}
+
+#header-gantt.toggled
+{
+    background: #000 url("../img/ic_gantt_white.png") no-repeat; 
+    background-position: center;
+    background-size: 60%;
+}
+
+#header-table
+{
+    float: left; 
+    width: 40px; 
+    height: 40px; 
+    background: #87cefa url("../img/ic_calendar.png") no-repeat; 
+    margin-top: 20px; 
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-position: center;
+    background-size: 60%;
+    cursor: pointer;
+}
+
+#header-table:hover
+{
+    background: #000 url("../img/ic_calendar_white.png") no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+#header-table.toggled
+{
+    background: #000 url("../img/ic_calendar_white.png") no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+
+#optimize-table-div
+{
+    width: 100%;
+    height: 100%;
+}
+
+.optdelete{
+    background-color: #990000;
+    color: white;
+}
+
+.optsave{
+    background-color: #009900;
+    color: white;
+}

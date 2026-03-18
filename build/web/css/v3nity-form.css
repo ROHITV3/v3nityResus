@@ -1,0 +1,409 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Nov 26, 2015, 3:18:11 PM
+    Author     : kevin
+*/
+
+.form-sheet {
+    position: absolute;
+    background-color: inherit;
+    border: 1px solid #eeeeee;
+    padding: 4px;
+    width: 100%;
+    height: 800px;
+    overflow-y: scroll;
+}
+
+.form-sheet.static {
+    border: none;
+    padding: 0;
+}
+
+.form-menu {
+    background-color: inherit;
+    padding: 4px;
+    width: 100%;
+}
+
+.form-menu label {
+    display: block;
+    margin: 16px 0 8px 0;
+}
+
+.form-menu input[type="range"] {
+    margin-right: 8px;
+    width:300px;
+}
+
+.form-field, .form-field fieldset{
+    display: block;
+    background-color: inherit;
+    border: 1px solid #ffffff;
+    margin-bottom: 4px;
+    padding: 4px;
+    width: 100%;
+}
+.form-field img.selected {
+
+    border: 5px solid #4D94DB;
+}
+
+.form-sheet.static .form-field {
+    border: none;
+    padding: 0;
+}
+
+.form-field:hover {
+    border: 1px solid #4D94DB;
+}
+
+.form-sheet.static .form-field:hover {
+    border: none;
+}
+
+.form-field .mandatory:after {
+    color: #CC0000;
+    content: " *";
+}
+
+.form-field.selected {
+    background-color: #E0EDF9;
+    border: 1px solid #4D94DB;
+}
+
+.form-sheet.static .form-field.selected {
+    background-color: inherit;
+    border: none;
+}
+
+.form-field .form-buttons {
+    display: none;
+}
+
+.form-field:hover .form-buttons {
+    display: inline;
+}
+
+.form-field-menu {
+
+}
+
+.form-sheet input, .form-sheet select, .form-sheet label, .form-sheet textarea {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    font-family: 'Century Gothic';
+    font-size: 18px;
+    font-weight: lighter;
+    margin: 8px 0 16px 0;
+    width: 100%;
+}
+
+.form-sheet.static input, .form-sheet.static select, .form-sheet.static label, .form-sheet.static textarea {
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.form-sheet label {
+    cursor: default;
+}
+
+.form-sheet div .form-field-label {
+    color: #437DC6;
+    font-weight: bold;
+}
+
+.form-sheet.static div .form-field-label {
+    color: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
+.form-sheet input, .form-sheet select, .form-sheet textarea {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+    color: #000;
+    outline: none;
+    padding: 4px;
+}
+
+.form-sheet.static input, .form-sheet.static select, .form-sheet.static textarea {
+    background-color: inherit;
+    padding: 8px;
+}
+
+.form-sheet input[type="file"], .form-sheet input[type="hidden"] {
+    height: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+.form-sheet input[type="submit"] {
+    border: none;
+    height: auto;
+    width: auto;
+}
+
+.form-sheet input[type="submit"]:active, .form-sheet input[type="submit"]:focus {
+    border: none;
+    outline: 0;
+}
+
+.form-sheet input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    display: inline-block;
+    height: 22px;
+    margin-right: 8px;
+    padding: 4px;
+    vertical-align: middle;
+    width: 22px;
+}
+
+.form-sheet input[type="radio"] {
+    -webkit-appearance: radio;
+    display: inline-block;
+    height: 22px;
+    margin-right: 8px;
+    padding: 4px;
+    vertical-align: middle;
+    width: 22px;
+}
+
+.form-sheet input:focus, .form-sheet select:focus, .form-sheet textarea:focus {
+    border: 1px solid #808080;
+}
+
+.form-sheet input::-webkit-input-placeholder, .form-sheet textarea::-webkit-input-placeholder {
+    color: #808080;
+}
+
+.form-sheet input:-moz-placeholder, .form-sheet textarea:-moz-placeholder {
+    color: #808080;
+}
+
+.form-sheet input::-moz-placeholder, .form-sheet textarea::-moz-placeholder {
+    color: #808080;
+}
+
+.form-sheet input:-ms-input-placeholder, .form-sheet textarea:-ms-input-placeholder {
+    color: #808080;
+}
+
+.form-sheet div.drawingimage {
+    background-image: url("../img/form_image_drawing.png");
+    background-repeat: no-repeat;
+    min-height: 96px;
+    min-width: 96px;
+    cursor: pointer;
+}
+.form-sheet div.drawingimage img {
+    height: auto;
+    width: auto;
+}
+
+.form-sheet div.image {
+    background-image: url("../img/form_photo.png");
+    background-repeat: no-repeat;
+    min-height: 96px;
+    min-width: 96px;
+    cursor: pointer;
+}
+
+.form-sheet div.image img {
+    height: auto;
+    width: auto;
+}
+
+.form-sheet div input[type="image"] {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    height: 96px;
+    width: 96px;
+    border: none;
+    background: transparent;
+    cursor: default;
+}
+
+.form-sheet div img {
+    object-fit: contain;
+    height: 256px;
+    width: 256px;
+    /*margin: 4px;*/
+}
+
+.form-sheet .signature img {
+    object-fit: contain;
+    height: 96px !important;
+    width: 96px !important;
+}
+
+.form-sheet .drawing img {
+    object-fit: contain;
+    height: 96px !important;
+    width: 96px !important;
+}
+
+.form-sheet .rating {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+    width: 100%;
+}
+
+.form-sheet .rating div {
+    display: inline-block;
+}
+
+.form-sheet .rating-input {
+    float: left;
+}
+
+.form-sheet .rating-star {
+    position: relative;
+    float: left;
+    display: inline-block;
+    margin: 8px 4px;
+    text-align: right;
+    width: 32px;
+}
+
+.form-sheet .hint-button{
+    width:20px;
+    height:20px;
+    border: 0;
+    background: url("../img/form-hint.png") no-repeat top left;
+    background-size: 50%;
+    background-size: 20px auto;
+}
+
+.form-sheet .hint-label{
+    font-style: italic;
+    font-size: 16px;
+    background: #F1F1F1
+}
+
+.form-sheet input[type="iconcheckbox"] {
+    -webkit-appearance: checkbox;
+    display: none;
+    height: 22px;
+    margin-right: 8px;
+    padding: 4px;
+    vertical-align: middle;
+    width: 22px;
+}
+
+.form-sheet div .form-field-label.collapser::before{
+    content: "\25B2  ";
+    color: #808080;
+}
+
+.form-sheet div .form-field-label.collapser.expand::before{
+    content: "\25BC  ";
+    color: #808080;
+}
+
+.report-cell-name {
+    display: block;
+    margin: 4px 2px;
+}
+
+.report-cell-tag {
+    display: inline-block;
+    border-radius: 4px;
+    font-size: smaller;
+    margin: 2px;
+    padding: 4px 8px;
+    white-space: nowrap;
+}
+
+.report-cell-tag.role {
+    background-color: #437DC6;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.report-cell-tag.fontsize {
+    background-color: #ffbc00;
+    color: #fff;
+}
+
+.report-cell-tag.fontstyle {
+    background-color: #CBA2E4;
+    color: #fff;
+}
+
+.report-cell-tag.alignment {
+    background-color: #97d623;
+    color: #fff;
+}
+
+.report-cell-tag.titlestyle {
+    background-color: #e6ac00;
+    color: #fff;
+}
+
+.report-cell-tag.imagesize {
+    background-color: #cc3333;
+    color: #fff;
+}
+
+
+.form-sheet div.fileUpload {
+    background-image: url("../img/file_icon.png");
+    background-repeat: no-repeat;
+    min-height: 96px;
+    min-width: 96px;
+    cursor: pointer;
+}
+
+#canvas-container {
+    z-index: 1072;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 100%;
+    min-width: 100%;
+    background-color: rgba(51, 51, 51, 0.7) !important;
+}
+
+#signature-canvas {
+    border: 1px solid black;
+    background: #ffffff;
+    display: block;
+    position: absolute;
+    top: 15%;
+    left: 35%;
+}
+
+.pad-btn-container {
+    top: 75%;
+    display: block;
+    text-align: left;
+    padding-left: 5px;
+    width: 400px;
+    left: 35%;
+    background-color: white;
+}
+
+.pad-btn-container .button {
+    height: 1.25rem;
+}
+
+
+.form-sheet div.file {
+    padding-top: 10px;
+}
