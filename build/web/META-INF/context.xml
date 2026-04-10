@@ -15,6 +15,6 @@
         removeAbandoned="true"
         removeAbandonedTimeout="60"
         type="javax.sql.DataSource"
-        url="jdbc:sqlserver://192.168.254.50:1433;databaseName=v3nityResus"
+        url="jdbc:sqlserver://192.168.254.50:1433;databaseName=v3nityResus;encrypt=true;trustServerCertificate=true"
         username="v3sqluser"/>
 </Context>

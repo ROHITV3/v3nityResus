@@ -14,11 +14,11 @@
     boolean update = (boolean) request.getAttribute("update");
 
     boolean delete = (boolean) request.getAttribute("delete");
-    
+
     int userId = listProperties.getUser().getId();
 
     String domainUrl = listProperties.getSystemProperties().getDomainURL();
-    
+
     ResusCustomerDropDown resusCustomerDropDown = new ResusCustomerDropDown(listProperties);
     resusCustomerDropDown.setIdentifier("dropdown-resus-customer");
     resusCustomerDropDown.loadData(listProperties);
@@ -34,11 +34,11 @@
     ResusQuotationTypeDropDown resusQuotationTypeDropDown = new ResusQuotationTypeDropDown(listProperties);
     resusQuotationTypeDropDown.setIdentifier("dropdown-quotation-type");
     resusQuotationTypeDropDown.loadData(listProperties);
-    
+
     ResusCostCentreDropDown resusCostCentreDropDown = new ResusCostCentreDropDown(listProperties);
     resusCostCentreDropDown.setIdentifier("dropdown-cost-centre-customer");
     resusCostCentreDropDown.loadData(listProperties);
-    
+
     ResusJobshetOrderTypeDropDown resusOrderTypeDropDown = new ResusJobshetOrderTypeDropDown(listProperties);
     resusOrderTypeDropDown.setIdentifier("dropdown-jobsheet-order-type");
     resusOrderTypeDropDown.loadData(listProperties);
@@ -47,9 +47,9 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
         <title>${title}</title>
-        <%
-            data.outputScriptHtml(out);
+        <%            data.outputScriptHtml(out);
         %>
         <style>
             #container {
@@ -87,7 +87,7 @@
                 line-height: 20px;
                 font-size: 14px;
                 margin-left: 3px;
-            } 
+            }
 
             .cap-icon{
                 float: left;
@@ -96,7 +96,7 @@
                 margin-left: 5px;
 
                 background: url("img/bin.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
 
                 cursor: pointer;
@@ -104,7 +104,7 @@
 
             .cap-icon:hover{
                 background: url("img/bin_hover_2.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
             }
 
@@ -140,7 +140,7 @@
 
                 margin-left: 3px;
                 margin-right: 5px;
-            } 
+            }
 
             .add-icon{
                 float: left;
@@ -148,7 +148,7 @@
                 height: 20px;
 
                 background: url("img/add.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
 
                 cursor: pointer;
@@ -160,7 +160,9 @@
                 cursor: pointer;
             }
 
-            select:invalid { color: gray; }
+            select:invalid {
+                color: gray;
+            }
 
             .confirm-icon{
                 float: left;
@@ -169,14 +171,14 @@
                 margin-top: 5px;
 
                 background: url("img/ic_confirm.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
 
                 cursor: pointer;
             }
             .confirm-icon:hover{
                 background: url("img/ic_confirm_hover.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
             }
 
@@ -187,7 +189,7 @@
                 margin-top: 5px;
 
                 background: url("img/ic_cancel.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
 
                 cursor: pointer;
@@ -195,7 +197,7 @@
             .cancel-icon:hover
             {
                 background: url("img/ic_cancel_hover.png") no-repeat;
-                background-position: center; 
+                background-position: center;
                 background-size: 80%;
             }
 
@@ -211,13 +213,17 @@
             .waste-type .caption{
                 font-size: 12px;
             }
-            
+
             .float-left{
-                float:left; 
+                float:left;
             }
 
 
         </style>
+        <link href="css/metro.css" rel="stylesheet">
+        <link href="css/metro-icons.css" rel="stylesheet">
+
+        <script src="js/metro.js"></script>
         <script type="text/javascript">
 
             var csv_${namespace} = new csvDownload('ListController?lib=${lib}&type=${type}&action=view', 'V3NITY');
@@ -230,10 +236,18 @@
 
             var customFilterQuery_${namespace} = [];
 
-            var listFields = [];
+            var filterLoaded_${namespace} = false;
 
-            $(document).ready(function()
+            var treeFilterQuery_${namespace} = [];
+            var finalFilterQuery_${namespace} = [];
+
+            var listFields = [];
+            var tbl;
+
+            $(document).ready(function ()
             {
+
+
                 $('select[name=dropdownCustomer]').on('change', function ()
                 {
                     console.log("Onchange customer : " + $('select[name=dropdownCustomer]').val());
@@ -271,160 +285,171 @@
                         async: false
                     });
                 });
-                
+
                 if (typeof ${namespace}ListForm !== 'undefined' && typeof ${namespace}ListForm === 'function')
                 {
                     listForm_${namespace} = new ${namespace}ListForm('${namespace}-specific-filter');
-                }
-                else
+                } else
                 {
                     listForm_${namespace} = new ListForm('${namespace}-specific-filter');
                 }
 
-                var tbl = $('#${namespace}-result-table').DataTable(
-                    {
-                        dom: 'rtip',
-                        pageLength: ${pageLength},
-                        deferLoading: <%=(data.hasInitialData() ? "null" : "0")%>,
-                        autoWidth: false,
-                        deferRender: true,
-                        orderClasses: false,
-                        columns: [${columnList}],
-                        order: [${orderList}],
-                        processing: true,
-                        serverSide: true,
-                        responsive: true,
-                        ajax: {
-                            url: 'ListController?lib=${lib}&type=${type}&format=json&action=view',
-                            type: 'POST',
-                            data: function(d)
-                            {
-                                d.totalRecords = totalRecords_${namespace};
-                                d.requireOverallCount = requireOverallCount_${namespace};
-                                d.customFilterQuery = JSON.stringify(customFilterQuery_${namespace});
-                                d.filter = '${filter}';
-                                d.foreignKey = '${foreignKey}';
-                                d.visibleColumnIndexes = listForm_${namespace}.getColumns();
-                            },
-                            beforeSend: function()
-                            {
-                                $('.toolbar-button').prop("disabled", true);
-                            },
-                            error: function(xhr, error, thrown)
-                            {
-                                dialog('Loading Error', 'Sorry, please try again few minutes later', 'alert');
-                            },
-                            complete: function()
-                            {
-                                $('.toolbar-button').prop("disabled", false);
-                            },
-                            dataSrc: function(json)
-                            {
-                                var data = json;
-
-                                if (data.expired === undefined)
+                tbl = $('#${namespace}-result-table').DataTable(
+                        {
+                            dom: 'rtip',
+                            pageLength: 20000,
+                            deferLoading: <%=(data.hasInitialData() ? "null" : "0")%>,
+                            autoWidth: false,
+                            deferRender: true,
+                            orderClasses: false,
+                            columns: [${columnList}],
+                            order: [${orderList}],
+                            processing: true,
+                            serverSide: true,
+                            responsive: true,
+                            ajax: {
+                                url: 'ListController?lib=${lib}&type=${type}&format=json&action=view',
+                                type: 'POST',
+                                data: function (d)
                                 {
-                                    if (data.result === true)
+                                    d.totalRecords = totalRecords_${namespace};
+                                    d.requireOverallCount = requireOverallCount_${namespace};
+                                    d.customFilterQuery = JSON.stringify(customFilterQuery_${namespace});
+                                    d.filter = '${filter}';
+                                    d.foreignKey = '${foreignKey}';
+                                    d.visibleColumnIndexes = listForm_${namespace}.getColumns();
+                                },
+                                beforeSend: function ()
+                                {
+                                    $('.toolbar-button').prop("disabled", true);
+                                },
+                                error: function (xhr, error, thrown)
+                                {
+                                    dialog('Loading Error', 'Sorry, please try again few minutes later', 'alert');
+                                },
+                                complete: function ()
+                                {
+                                    $('.toolbar-button').prop("disabled", false);
+                                },
+                                dataSrc: function (json)
+                                {
+                                    var data = json;
+
+
+
+                                    if (data.expired === undefined)
                                     {
-                                        if (data.visibleColumns !== undefined)
+                                        if (data.result === true)
                                         {
-                                            showColumns(tbl, data.visibleColumns);
-                                        }
+                                            if (data.visibleColumns !== undefined)
+                                            {
+                                                showColumns(tbl, data.visibleColumns);
+                                            }
 
-                                        if (data.data !== undefined && data.data.length === 0 && totalRecords_${namespace} !== -1)
-                                        {
-                                            dialog('No Record', 'No record found', 'alert');
-                                        }
+                                            if (data.data !== undefined && data.data.length === 0 && totalRecords_${namespace} !== -1)
+                                            {
+                                                dialog('No Record', 'No record found', 'alert');
+                                            }
 
-                                        if (typeof ondatasuccess === 'function')
+                                            if (typeof ondatasuccess === 'function')
+                                            {
+                                                ondatasuccess();
+                                            }
+                                        } else
                                         {
-                                            ondatasuccess();
+                                            dialog('Search Failed', data.text, 'alert');
+
+                                            // we need this for the data-table to read...
+                                            json.data = [];
                                         }
-                                    }
-                                    else
+                                    } else
                                     {
-                                        dialog('Search Failed', data.text, 'alert');
-
                                         // we need this for the data-table to read...
                                         json.data = [];
                                     }
-                                }
-                                else
-                                {
-                                    // we need this for the data-table to read...
-                                    json.data = [];
-                                }
+                                    console.log("FULL RESPONSE:", json);
+                                    console.log("TABLE DATA:", json.data);
+//                                console.log("FIRST ROW:", json.data[0]);
+//                                  // 🔥 Populate filter only once
+//           // 🔥 Populate filter only once
+//    if (!filterLoaded_${namespace}) {
+//        // Make sure json.data is an array
+//        const tableData = Array.isArray(json.data) ? json.data : [];
+//        populateColumnFilters_${namespace}(tableData);
+//        filterLoaded_${namespace} = true;
+//    }
+                                    return json.data;
+                                    }
+                            },
 
-                                return json.data;
-                                }
-                        },
-                        drawCallback: function(settings)
-                        {
-                            if (settings.json === undefined)
+                            drawCallback: function (settings)
                             {
-                                return;
-                            }
-
-                            /*
-                             * throws error message...
-                             */
-                            if (settings.json.errorText !== undefined)
-                            {
-                                dialog('Error', settings.json.errorText, 'alert');
-
-                                return;
-                            }
-
-                            /* do this so that the total records will not be retrieved from the database again...
-                             * greatly increase performance towards retrieving data from datatable...
-                             */
-                            if (tbl !== undefined)
-                            {
-                                if (tbl.page.info().recordsTotal === 0 && totalRecords_${namespace} !== -1)
+                                if (settings.json === undefined)
                                 {
-
+                                    return;
                                 }
 
-                                totalRecords_${namespace} = tbl.page.info().recordsTotal;
-
-                                if (isNaN(totalRecords_${namespace}))
+                                /*
+                                 * throws error message...
+                                 */
+                                if (settings.json.errorText !== undefined)
                                 {
-                                    totalRecords_${namespace} = 0;
+                                    dialog('Error', settings.json.errorText, 'alert');
+
+                                    return;
                                 }
 
-                                requireOverallCount_${namespace} = false;
-                            }
-                        },
-                        headerCallback: function(thead, data, start, end, display)
-                        {
+                                /* do this so that the total records will not be retrieved from the database again...
+                                 * greatly increase performance towards retrieving data from datatable...
+                                 */
+                                if (tbl !== undefined)
+                                {
+                                    if (tbl.page.info().recordsTotal === 0 && totalRecords_${namespace} !== -1)
+                                    {
 
-                        },
-                        createdRow: function(row, data, dataIndex)
-                        {
+                                    }
+
+                                    totalRecords_${namespace} = tbl.page.info().recordsTotal;
+
+                                    if (isNaN(totalRecords_${namespace}))
+                                    {
+                                        totalRecords_${namespace} = 0;
+                                    }
+
+                                    requireOverallCount_${namespace} = false;
+                                }
+                            },
+
+                            headerCallback: function (thead, data, start, end, display)
+                            {
+
+                            },
+                            createdRow: function (row, data, dataIndex)
+                            {
             ${highlight};
-                        },
-                        select: <%=(data.hasSelection()) ? "{ style: 'single' }" : "{}"%>,
-                        buttons: [
-                            'selectAll',
-                            'selectNone',
-                            'csv'
-                        ],
-                        language: {
-                            info: '<%=listProperties.getLanguage("showing")%>' + ' _START_ ' + '<%=listProperties.getLanguage("to")%>'.toLowerCase() + ' _END_ ' + '<%=listProperties.getLanguage("of")%>'.toLowerCase() + ' _TOTAL_ ' + '<%=listProperties.getLanguage("entries")%>'.toLowerCase() + ' ',
-                            infoEmpty: '<%=listProperties.getLanguage("showing")%>' + ' 0 ' + '<%=listProperties.getLanguage("to")%>'.toLowerCase() + ' 0 ' + '<%=listProperties.getLanguage("of")%>'.toLowerCase() + ' 0 ' + '<%=listProperties.getLanguage("entries")%>'.toLowerCase() + ' ',
-                            emptyTable: '<%=listProperties.getLanguage("noDataAvailable")%>',
-                            loadingRecords: 'Loading...',
-                            processing: 'Retrieving...<span class="mif-spinner2 mif-ani-spin"></span>',
-                            zeroRecords: 'No matching records found',
-                            paginate: {
-                                first: '<<',
-                                last: '>>',
-                                next: '>',
-                                previous: '<'
+                            },
+                            select: <%=(data.hasSelection()) ? "{ style: 'single' }" : "{}"%>,
+                            buttons: [
+                                'selectAll',
+                                'selectNone',
+                                'csv'
+                            ],
+                            language: {
+                                info: '<%=listProperties.getLanguage("showing")%>' + ' _START_ ' + '<%=listProperties.getLanguage("to")%>'.toLowerCase() + ' _END_ ' + '<%=listProperties.getLanguage("of")%>'.toLowerCase() + ' _TOTAL_ ' + '<%=listProperties.getLanguage("entries")%>'.toLowerCase() + ' ',
+                                infoEmpty: '<%=listProperties.getLanguage("showing")%>' + ' 0 ' + '<%=listProperties.getLanguage("to")%>'.toLowerCase() + ' 0 ' + '<%=listProperties.getLanguage("of")%>'.toLowerCase() + ' 0 ' + '<%=listProperties.getLanguage("entries")%>'.toLowerCase() + ' ',
+                                emptyTable: '<%=listProperties.getLanguage("noDataAvailable")%>',
+                                loadingRecords: 'Loading...',
+                                processing: 'Retrieving...<span class="mif-spinner2 mif-ani-spin"></span>',
+                                zeroRecords: 'No matching records found',
+                                paginate: {
+                                    first: '<<',
+                                    last: '>>',
+                                    next: '>',
+                                    previous: '<'
+                                }
                             }
-                        }
 
-                    });
+                        });
 
                 if (getBrowser() !== 'ie')
                 {
@@ -438,14 +463,24 @@
                 //     every ajax call, turn off the draw event otherwise,
                 //     all rows will be selected from the table upon selecting buttons within the table.
                 //     there is something wrong with the datatable with server side processing.
-                tbl.on('xhr', function()
-                {
+                // existing xhr event (keep it)
+                tbl.on('xhr', function () {
 
-                    // this will turn off the event...
+                    // turn off draw event
                     tbl.off('draw.dt.dtSelect');
 
-                    // whenever there is a ajax call, unselect all the items...
+                    // unselect all
                     $('#${namespace}-selectAll').removeClass('selected');
+                });
+
+
+// ✅ ADD THIS SEPARATELY (NO COMMA)
+                tbl.on('xhr', function (e, settings, json) {
+
+
+                    const tableData = Array.isArray(json.data) ? json.data : [];
+
+                    populateDropdowns_${namespace}(tableData);
                 });
             });
 
@@ -468,7 +503,7 @@
                         type: 'POST',
                         url: 'ListController?lib=${lib}&type=${type}&action=edit',
                         data: dataEdit,
-                        success: function(data)
+                        success: function (data)
                         {
 
                             if (data.expired === undefined)
@@ -480,14 +515,13 @@
 
                                     cell.data(cell.data()).draw();
 
-                                }
-                                else
+                                } else
                                 {
                                     dialog('Failed', data.text, 'alert');
                                 }
                             }
                         },
-                        error: function()
+                        error: function ()
                         {
                             dialog('Error', 'System has encountered an error', 'alert');
                         },
@@ -496,18 +530,18 @@
                 }
             }
 
-            $("input[id^=dateTimePicker]").change(function()
+            $("input[id^=dateTimePicker]").change(function ()
             {
 
                 $('#${namespace}-email-button').prop("disabled", false);
             });
 
-            $("#${namespace}-tool-button-add").click(function()
+            $("#${namespace}-tool-button-add").click(function ()
             {
                 showAdd_${namespace}();
             });
 
-            $("#${namespace}-tool-button-edit").click(function()
+            $("#${namespace}-tool-button-edit").click(function ()
             {
                 var table = $('#${namespace}-result-table').DataTable();
 
@@ -523,8 +557,7 @@
                     var id = data.join();
 
                     showEdit_${namespace}(id);
-                }
-                else
+                } else
                 {
                     dialog('No Record Selected', 'Please select a record to edit', 'alert');
                 }
@@ -533,7 +566,7 @@
             function dispose()
             {
                 // whenever reload, we need to release resource for id with the datetimepicker prefix...
-                $('[id^="dateTimePicker"]').each(function(index, elem)
+                $('[id^="dateTimePicker"]').each(function (index, elem)
                 {
                     $(elem).AnyTime_noPicker();
                 });
@@ -548,8 +581,7 @@
                 {
                     $('#${namespace}-result-table').DataTable().button(1).trigger();
                     $('#${namespace}-selectAll').removeClass('selected');
-                }
-                else
+                } else
                 {
                     $('#${namespace}-result-table').DataTable().button(0).trigger();
                     $('#${namespace}-selectAll').addClass('selected');
@@ -581,8 +613,7 @@
                     var table = $('#${namespace}-result-table').DataTable();
 
                     table.page.len(pageLength).draw();
-                }
-                else
+                } else
                 {
                     resetPageLength_${namespace}();
                 }
@@ -611,11 +642,11 @@
                     type: 'POST',
                     url: 'ListController?lib=${lib}&type=${type}&action=sync',
                     data: $('#${namespace}-form-dialog-data').serialize(),
-                    beforeSend: function()
+                    beforeSend: function ()
                     {
                         $('#${namespace}-button-deviceSync').prop("disabled", true);
                     },
-                    success: function(data)
+                    success: function (data)
                     {
 
                         if (data.expired === undefined)
@@ -623,18 +654,17 @@
                             if (data.result === true)
                             {
                                 dialog('Success', data.text, 'success');
-                            }
-                            else
+                            } else
                             {
                                 dialog('Failed', data.text, 'alert');
                             }
                         }
                     },
-                    error: function()
+                    error: function ()
                     {
                         dialog('Error', 'System has encountered an error', 'alert');
                     },
-                    complete: function()
+                    complete: function ()
                     {
                         $('#${namespace}-button-deviceSync').prop("disabled", false);
                     },
@@ -666,7 +696,7 @@
                         url: 'ListController?lib=${lib}&type=${type}&action=email&format=csv',
                         data: options,
                         async: true,
-                        success: function(data)
+                        success: function (data)
                         {
                             if (data.expired === undefined)
                             {
@@ -675,21 +705,19 @@
                                 {
                                     dialog('Report Download', 'Download link will be sent via email when report is ready for download', 'success');
 
-                                }
-                                else
+                                } else
                                 {
                                     dialog('Failed', data.text, 'alert');
                                 }
                                 $('#${namespace}-email-button').prop("disabled", false);
                             }
                         },
-                        beforeSend: function()
+                        beforeSend: function ()
                         {
                             $('#${namespace}-email-button').prop("disabled", true);
                         }
                     });
-                }
-                else
+                } else
                 {
                     dialog('Error', 'Please select at least 1 asset', 'alert');
                 }
@@ -708,13 +736,11 @@
                         var text = node.children('span')[0].innerHTML;
 
                         return text;
-                    }
-                    else
+                    } else
                     {
                         return ids.split(',').length + 'assets';
                     }
-                }
-                else
+                } else
                 {
                     return '';
                 }
@@ -723,8 +749,7 @@
             function loadSubType_${namespace}(id)
             {
             <%
-                if (metaDataSubType != null)
-                {
+                if (metaDataSubType != null) {
                     String subType = metaDataSubType.getForeignListClass().getSimpleName();
 
                     String subTypeForeignKey = metaDataSubType.getForeignKeyName();
@@ -734,8 +759,7 @@
                 if (id === -1)
                 {
                     $('#${namespace}-sub-type').html('<p class="note">Please save and click edit to manage <%=subTypeDisplayName%>.</p>');
-                }
-                else
+                } else
                 {
                     $('#${namespace}-sub-type').load('ListController?lib=${lib}&type=<%=subType%>&filter=' + id + '&foreignKey=<%=subTypeForeignKey%>');
                 }
@@ -761,11 +785,11 @@
                         type: 'POST',
                         url: 'ListController?lib=${lib}&type=${type}&action=' + action + '&id=' + id,
                         data: $('#${namespace}-form-dialog-data').serialize(),
-                        beforeSend: function()
+                        beforeSend: function ()
                         {
                             $('#${namespace}-button-save').prop("disabled", true);
                         },
-                        success: function(data)
+                        success: function (data)
                         {
                             if (data.expired === undefined)
                             {
@@ -776,29 +800,26 @@
                                     refreshPageLength_${namespace}();
 
                                     closeForm_${namespace}();
-                                }
-                                else
+                                } else
                                 {
                                     dialog('Failed', data.text, 'alert');
                                 }
-                            }
-                            else
+                            } else
                             {
                                 closeForm_${namespace}();
                             }
                         },
-                        error: function()
+                        error: function ()
                         {
                             dialog('Error', 'System has encountered an error', 'alert');
                         },
-                        complete: function()
+                        complete: function ()
                         {
                             $('#${namespace}-button-save').prop("disabled", false);
                         },
                         async: true
                     });
-                }
-                else
+                } else
                 {
                     dialog('Error', listForm_${namespace}.saveError, 'alert');
                 }
@@ -902,15 +923,13 @@
                             default:
                                 break;
                         }
-                    }
-                    else if (element.tagName.toLowerCase() === 'select')
+                    } else if (element.tagName.toLowerCase() === 'select')
                     {
                         /*
                          * cater for select2 plugin...
                          */
                         $(element).prop('selectedIndex', 0).trigger('change');
-                    }
-                    else if (element.tagName.toLowerCase() === 'textarea')
+                    } else if (element.tagName.toLowerCase() === 'textarea')
                     {
                         element.value = "";
                     }
@@ -921,7 +940,7 @@
                  */
                 listForm_${namespace}.reset();
 
-                listFields.forEach(function(value, index)
+                listFields.forEach(function (value, index)
                 {
                     value.clear();
                 });
@@ -931,12 +950,11 @@
             {
 
             <%
-                if (metaDataSubType != null)
-                {
+                if (metaDataSubType != null) {
                     String subType = metaDataSubType.getForeignListClass().getSimpleName();
             %>
                 // we need to unload the datetime picker of the sub class because if not, when the dialog opens again it will load redundantly and cause error.
-                $('#<%=subType%>-form-dialog').find('[id^="dateTimePicker"]').each(function(index, elem)
+                $('#<%=subType%>-form-dialog').find('[id^="dateTimePicker"]').each(function (index, elem)
                 {
                     $(elem).AnyTime_noPicker();
                 });
@@ -959,7 +977,7 @@
                     data: {
                         id: id
                     },
-                    success: function(data, status, request)
+                    success: function (data, status, request)
                     {
                         if (request.getResponseHeader('content-type').includes('json'))
                         {
@@ -968,17 +986,16 @@
                             listForm_${namespace}.populate(data);
 
                             result = true;
-                        }
-                        else
+                        } else
                         {
                             $('body').html(data);
                         }
                     },
-                    error: function()
+                    error: function ()
                     {
                         dialog('Error', 'System has encountered an error', 'alert');
                     },
-                    complete: function()
+                    complete: function ()
                     {
 
                     },
@@ -990,38 +1007,32 @@
 
             function populateForm_${namespace}(result)
             {
-                $.each(result.data, function(i, field)
+                $.each(result.data, function (i, field)
                 {
                     if (field.type === 'text')
                     {
                         $('input[name=' + field.name + ']').val(field.value);
-                    }
-                    else if (field.type === 'textarea')
+                    } else if (field.type === 'textarea')
                     {
                         $('textarea[name=' + field.name + ']').val(field.value);
-                    }
-                    else if (field.type === 'selection')
+                    } else if (field.type === 'selection')
                     {
                         if (field.value === 0)
                         {
                             $('select[name=' + field.name + ']').val('').trigger('change');
-                        }
-                        else
+                        } else
                         {
                             $('select[name=' + field.name + ']').val(field.value).trigger('change');
                         }
-                    }
-                    else if (field.type === 'searchable')
+                    } else if (field.type === 'searchable')
                     {
                         $('input[name=' + field.name + ']').val(field.value);
 
                         $('#list-data-field-' + field.name).val(field.text);
-                    }
-                    else if (field.type === 'checkbox')
+                    } else if (field.type === 'checkbox')
                     {
                         $('input[name=' + field.name + ']').prop('checked', field.value);
-                    }
-                    else if (field.type === 'html')
+                    } else if (field.type === 'html')
                     {
 
                     }
@@ -1030,7 +1041,29 @@
 
             function customFilter_${namespace}()
             {
-                customFilterQuery_${namespace} = listForm_${namespace}.filter();
+
+
+                let listFilters = listForm_${namespace}.filter() || [];
+                let treeFilters = treeFilterQuery_${namespace} || [];
+
+                let merged = [];
+
+                listFilters.forEach(function (lf) {
+                    merged.push(lf);
+                });
+
+                treeFilters.forEach(function (tf) {
+
+                    merged = merged.filter(function (f) {
+                        return f.field !== tf.field;
+                    });
+
+                    merged.push(tf);
+                });
+
+                customFilterQuery_${namespace} = merged;
+
+                console.log("Final Filters:", merged);
 
                 refreshDataTable_${namespace}();
             }
@@ -1046,7 +1079,7 @@
                     table.column(id).visible(false, false);
                 }
             }
-            
+
             function previewJobsheet() {
 
                 var pdfName = $('#button-view').data('pdf');
@@ -1212,7 +1245,7 @@
             function closeJobsheet()
             {
                 var jobsheetId = $('#button-void-quotation').data('id');
-                
+
                 $.ajax({
                     type: 'POST',
                     url: 'ResusJobsheetController?type=plan&action=closeJobsheet',
@@ -1291,7 +1324,7 @@
                     refreshPageLength_${namespace}();
                 }
             }
-            
+
             function getJobsheetData(id)
             {
                 console.log('getJobsheetData');
@@ -1333,7 +1366,7 @@
 //                        if (!cost_centre_found){
 //                            $('select[name=dropdownCostCentre]').val(0);
 //                        }
-                        
+
                         $('input[name=amount]').val(data.jobsheet_amount);
                         //amount = data.jobsheet_amount;
                         $('input[name=approved_by]').val(data.jobsheet_approved_by);
@@ -1359,7 +1392,7 @@
                 });
                 return result;
             }
-            
+
             function getJobsheetEmailOnlyForSignOFf(id)
             {
                 console.log('getJobsheetData');
@@ -1391,7 +1424,7 @@
                 });
                 return result;
             }
-            
+
             function downloadJobsheet(id) {
                 var pdfdialog = window.open("ResusJobsheetController?type=plan&action=downloadJobsheet&id=" + id, "_blank", "toolbar=no,status=no,scrollbars=no,menubar=no,height=" + screen.height + ",width=" + screen.width + ",resizeable=no");
                 pdfdialog.moveTo(0, 0);
@@ -1425,11 +1458,11 @@
                     async: false
                 });
             }
-            
-           function signOffJobsheet(id, jobsheetNo) {
-                
+
+            function signOffJobsheet(id, jobsheetNo) {
+
                 let link = '<%=domainUrl%>' + "jobsheetSignoff?id=" + id;
-                
+
                 var table = $('#${namespace}-result-table').DataTable();
 
                 const dtrow = table.row('#' + id);
@@ -1440,7 +1473,7 @@
                 var columnStatusData = table.cell(dtrow[0], testColIndexStatus[0]).data();
                 console.log('columnStatusData : ' + columnStatusData);
                 //var columnRefNoData = table.cell(dtrow[0], testColIndexRefNo[0]).data();
-                
+
                 $('#button-void').hide();
                 $('#button-recall').hide();
                 $('#button-email').hide();
@@ -1455,7 +1488,7 @@
                 $('textarea[name=signOffTextArea]').val("");
                 $('textarea[name=signOffTextArea]').hide();
                 getJobsheetEmailOnlyForSignOFf(id);
-                
+
                 if (columnStatusData.includes('New') || columnStatusData.includes('Edited') || columnStatusData.includes('Revised') || columnStatusData.includes('Pending Approval')) {
                     $('#button-yes').data('id', id);
                     $('#button-email').data('id', id);
@@ -1470,7 +1503,7 @@
                     $('#button-no').hide();
                     $('#button-yes').hide();
                 }
-                
+
                 if (columnStatusData.includes('Pending Approval')) {
                     $('#button-yes').data('id', id);
                     $('#button-email').data('id', id);
@@ -1486,7 +1519,7 @@
                     $('#button-no').hide();
                     $('#button-yes').hide();
                 }
-                
+
                 if (columnStatusData.includes('Approved')) {
                     $('#button-yes').data('id', id);
                     $('#button-email').data('id', id);
@@ -1496,7 +1529,7 @@
                     $('#button-nosigning').data('id', id);
                     $('#button-void').show();
                 }
-                
+
                 $('#button-close').show();
                 $('#signoff-dialog').data('dialog').open();
             }
@@ -1625,11 +1658,11 @@
                 } else if (action === 'noSignOff') {
                     $('#signoff-dialog-content').html('Jobsheet is close without sign off');
                     $('textarea[name=signOffTextArea]').hide();
-                     $('#signoff-dialog').animate({width: '600px', height: '150px'});
+                    $('#signoff-dialog').animate({width: '600px', height: '150px'});
                 } else if (action === 'signOffVoid') {
                     $('#signoff-dialog-content').html('Jobsheet Void');
                     $('textarea[name=signOffTextArea]').hide();
-                     $('#signoff-dialog').animate({width: '600px', height: '150px'});
+                    $('#signoff-dialog').animate({width: '600px', height: '150px'});
                 } else if (action === 'signOffRecall') {
                     $('#signoff-dialog-content').html('Jobsheet recalled');
                     $('textarea[name=signOffTextArea]').hide();
@@ -1643,8 +1676,8 @@
             function selectNoSignoff() {
                 $('#signoff-dialog').data('dialog').close();
             }
-            
-            function copyUrl(){
+
+            function copyUrl() {
                 let urlLink = $('#button-link').data('link');
                 navigator.clipboard.writeText(urlLink);
                 alert("Copied the link " + urlLink);
@@ -1732,7 +1765,7 @@
                 var pdfdialog = window.open("ResusJobsheetController?type=plan&action=downloadAttachment&filename=" + pdfName, "_blank", "toolbar=no,status=no,scrollbars=no,menubar=no,height=" + screen.height + ",width=" + screen.width + ",resizeable=no");
                 pdfdialog.moveTo(0, 0);
             });
-            
+
             function saveJobsheetForm()
             {
                 //addJobSheetDataWithQuotation
@@ -1780,8 +1813,8 @@
                     dialog('Error', 'Please key in date of completion', 'alert');
                     return;
                 }
-                if (action === 'addJobSheetDataWithQuotation' || action === 'editJobSheetDataWithQuotation'){
-                        if  ($('select[name=dropdownOrderType]').val() === '0') {
+                if (action === 'addJobSheetDataWithQuotation' || action === 'editJobSheetDataWithQuotation') {
+                    if ($('select[name=dropdownOrderType]').val() === '0') {
                         dialog('Error', 'Please select Job Order Type', 'alert');
                         return;
                     }
@@ -1798,7 +1831,7 @@
                     dialog('Error', 'Please key in completed by', 'alert');
                     return;
                 }
-                
+
 
                 let jobsheetType = 'withQuotation';
 //                if ($('input[name="partialCheckBox"]').prop("checked") === false) {
@@ -1857,7 +1890,7 @@
                         address: billing_address,
                         email: email,
                         id: jobsheetId,
-                        operatorId:jobsheetCreatorId,
+                        operatorId: jobsheetCreatorId,
                         jobsheetDoc: pdfName
                     },
                     beforeSend: function ()
@@ -1883,10 +1916,10 @@
                             closeAddJobsheet();
                             //If save from Add jobsheet (Must not have refreshJobsheetDataTable if not will have issues as the table is not initialized)
                             //If save from View jobsheet-Edit (Need to have refreshJobsheetDataTable)
-                            if (action==='editJobSheetDataWithQuotation'){
+                            if (action === 'editJobSheetDataWithQuotation') {
                                 refreshJobsheetDataTable();
                             }
-                            
+
                         } else
                         {
                             dialog('Failed', data.text, 'alert');
@@ -1903,7 +1936,7 @@
                     async: false
                 });
             }
-            
+
             //To edit Job Sheet tied to the quotation
             function editJobSheet(jobsheetId)
             {
@@ -1987,7 +2020,7 @@
                 document.getElementsByClassName('form-dialog')[0].style.visibility = 'visible';
                 $('#${namespace}-form-dialog').data('dialog').open();
             }
-            
+
             //To edit Job Sheet tied to the quotation
             function uploadJobSheetAttachement(jobsheetId)
             {
@@ -2069,11 +2102,11 @@
                 document.getElementsByClassName('form-dialog')[0].style.visibility = 'hidden';
                 $('#${namespace}-form-dialog').data('dialog').open();
             }
-            
+
             function signOffJobsheet(id, jobsheetNo) {
-                
+
                 let link = '<%=domainUrl%>' + "jobsheetSignoff?id=" + id;
-                
+
                 var table = $('#${namespace}-result-table').DataTable();
 
                 const dtrow = table.row('#' + id);
@@ -2084,7 +2117,7 @@
                 var columnStatusData = table.cell(dtrow[0], testColIndexStatus[0]).data();
                 //console.log('columnStatusData : ' + columnStatusData[1]);
                 var columnRefNoData = table.cell(dtrow[0], testColIndexRefNo[0]).data();
-                
+
                 $('#button-void').hide();
                 $('#button-recall').hide();
                 $('#button-email').hide();
@@ -2099,7 +2132,7 @@
                 $('textarea[name=signOffTextArea]').val("");
                 $('textarea[name=signOffTextArea]').hide();
                 getJobsheetEmailOnlyForSignOFf(id);
-                
+
                 if (columnStatusData.includes('New') || columnStatusData.includes('Edited') || columnStatusData.includes('Revised') || columnStatusData.includes('Pending Approval')) {
                     $('#button-yes').data('id', id);
                     $('#button-email').data('id', id);
@@ -2114,7 +2147,7 @@
                     $('#button-no').hide();
                     $('#button-yes').hide();
                 }
-                
+
                 if (columnStatusData.includes('Pending Approval')) {
                     $('#button-yes').data('id', id);
                     $('#button-email').data('id', id);
@@ -2130,7 +2163,7 @@
                     $('#button-no').hide();
                     $('#button-yes').hide();
                 }
-                
+
                 if (columnStatusData.includes('Approved')) {
                     $('#button-yes').data('id', id);
                     $('#button-email').data('id', id);
@@ -2140,7 +2173,7 @@
                     $('#button-nosigning').data('id', id);
                     $('#button-void').show();
                 }
-                
+
                 $('#button-close').show();
                 $('#signoff-dialog').data('dialog').open();
             }
@@ -2269,11 +2302,11 @@
                 } else if (action === 'noSignOff') {
                     $('#signoff-dialog-content').html('Jobsheet is close without sign off');
                     $('textarea[name=signOffTextArea]').hide();
-                     $('#signoff-dialog').animate({width: '600px', height: '150px'});
+                    $('#signoff-dialog').animate({width: '600px', height: '150px'});
                 } else if (action === 'signOffVoid') {
                     $('#signoff-dialog-content').html('Jobsheet Void');
                     $('textarea[name=signOffTextArea]').hide();
-                     $('#signoff-dialog').animate({width: '600px', height: '150px'});
+                    $('#signoff-dialog').animate({width: '600px', height: '150px'});
                 } else if (action === 'signOffRecall') {
                     $('#signoff-dialog-content').html('Jobsheet recalled');
                     $('textarea[name=signOffTextArea]').hide();
@@ -2288,12 +2321,144 @@
                 $('#signoff-dialog').data('dialog').close();
             }
 
+            function extractText(value) {
+
+                if (!value)
+                    return "";
+
+                let temp = $('<div>').html(value);
+
+                return temp.text().trim();
+            }
+
+            function populateDropdowns_${namespace}(data) {
+
+                const creatorSet = new Set();
+                const statusSet = new Set();
+
+                data.forEach(function (row) {
+                    if (row[3])
+                        creatorSet.add(extractText(row[3]));
+                    if (row[6])
+                        statusSet.add(extractText(row[6]));
+                });
+
+               
+                treeFilterQuery_${namespace} = [];
+
+                
+                loadIdsFromBackend("jobsheet_creator", Array.from(creatorSet), "creatorTree");
+                loadIdsFromBackend("jobsheet_status_type", Array.from(statusSet), "statusTree");
+            }
+
+            function loadIdsFromBackend(field, names, containerId) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "ResusQuotationController",
+                    data: {
+                        type: 'plan',
+                        action: "getIdsByNames",
+                        field: field,
+                        names: JSON.stringify(names)
+                    },
+                    success: function (res) {
+
+                        console.log("API SUCCESS:", res);
+
+                        if (res && res.data) {
+                            buildMetroTree(containerId, field, res.data);
+                        } else {
+                            console.log("No data received");
+                        }
+                    },
+                    error: function (err) {
+                        console.log("ERROR:", err);
+                    }
+                });
+            }
+
+
+            function buildMetroTree(containerId, field, values) {
+
+                var html = '';
+
+                html += '<li data-mode="checkbox" class="node">';
+                html += '<label class="input-control checkbox small-check">';
+                html += '<input type="checkbox"><span class="check"></span></label>';
+                html += '<span class="leaf text-bold">Select All</span>';
+                html += '<span class="node-toggle"></span>';
+                html += '<ul>';
+
+                values.forEach(function (obj) {
+
+                    html += '<li data-mode="checkbox" data-value="' + obj.id + '">';
+                    html += '<label class="input-control checkbox small-check">';
+                    html += '<input type="checkbox"><span class="check"></span></label>';
+                    html += '<span class="leaf">' + obj.name + '</span>';
+                    html += '</li>';
+                });
+
+                html += '</ul></li>';
+
+                $('#' + containerId).find('ul').html(html);
+
+                if (window.Metro) {
+                    Metro.init();
+                }
+            }
+            function getTreeSelectedValues_${namespace}(field) {
+
+                var values = [];
+
+                $('[name="' + field + '"] .treeview li[data-value]').each(function () {
+
+                    if ($(this).find('input[type="checkbox"]').prop('checked')) {
+                        values.push($(this).attr('data-value')); // ✅ ID
+                    }
+                });
+
+                return values;
+            }
+
+            $(document).on('click', '.treeview li', function () {
+
+                var container = $(this).closest('.tree-container');
+                var field = container.attr('name');
+
+                setTimeout(function () {
+                    var selectedValues = getTreeSelectedValues_${namespace}(field);
+
+                    // remove old
+                    treeFilterQuery_${namespace} =
+                            treeFilterQuery_${namespace} || [];
+                    treeFilterQuery_${namespace} = treeFilterQuery_${namespace}.filter(function (f) {
+                        return f.field !== field;
+                    });
+
+                    // add new
+                    if (selectedValues.length > 0) {
+                        treeFilterQuery_${namespace}.push({
+                            field: field,
+                            type: "Integer",
+                            operator: "IN",
+                            value: selectedValues
+                        });
+                    }
+
+                    console.log("Tree Filters:", treeFilterQuery_${namespace});
+
+                    // 🔹 merge with listform filters and refresh table
+                    // customFilter_${namespace}();
+
+                }, 10);
+            });
+
         </script>
     </head>
     <body>
         <%
-            if (data.hasUpload())
-            {
+            if (data.hasUpload()) {
                 request.setAttribute("properties", listProperties);
         %>
         <jsp:include page="list_upload.jsp"/>
@@ -2304,8 +2469,7 @@
             <h1 class="text-light"><%=listProperties.getLanguage(data.getDisplayName())%><span id='list-sub-title'></span></h1>
         </div>
         <%
-            if (!data.getCustomizedPage().equals(""))
-            {
+            if (!data.getCustomizedPage().equals("")) {
         %>
         <jsp:include page="<%=data.getCustomizedPage()%>"/>
         <%
@@ -2313,27 +2477,23 @@
         %>
         <div class="toolbar" style="margin: 16px 0">
             <%
-                if ((add && data.hasAddButton()) || (update && data.hasEditButton()) || (delete && data.hasDeleteButton()))
-                {
+                if ((add && data.hasAddButton()) || (update && data.hasEditButton()) || (delete && data.hasDeleteButton())) {
             %>
             <div class="toolbar-section">
                 <%
-                    if (add && data.hasAddButton())
-                    {
+                    if (add && data.hasAddButton()) {
                 %>
                 <button class="toolbar-button" type="button" id=${namespace}-tool-button-add name="add" value="" title="<%=listProperties.getLanguage("add")%>"><span class="mif-plus"></span></button>
                     <%
                         }
 
-                        if (update && data.hasEditButton())
-                        {
+                        if (update && data.hasEditButton()) {
                     %>
                 <button class="toolbar-button" type="button" id=${namespace}-tool-button-edit name="edit" value="" title="<%=listProperties.getLanguage("edit")%>"><span class="mif-pencil"></span></button>
                     <%
                         }
 
-                        if (delete && data.hasDeleteButton())
-                        {
+                        if (delete && data.hasDeleteButton()) {
                     %>
                 <button class="toolbar-button" type="button" id=${namespace}-tool-button-delete name="delete" value="" title="<%=listProperties.getLanguage("delete")%>"><span class="mif-bin"></span></button>
                     <%
@@ -2341,8 +2501,7 @@
                     %>
 
                 <%
-                    if (data.hasDeleteByFilterButton())
-                    {
+                    if (data.hasDeleteByFilterButton()) {
                 %>
 
                 <button class="toolbar-button" type="button" id=${namespace}-tool-button-delete-filter name="delete" value="" title="<%=listProperties.getLanguage("deleteByFilter")%>"><span class="mif-bin"></span></button>
@@ -2355,8 +2514,7 @@
             %>
 
             <%
-                if (data.hasCopyButton())
-                {
+                if (data.hasCopyButton()) {
             %>
             <div class="toolbar-section">
                 <button class="toolbar-button" type="button" title="<%=listProperties.getLanguage("copy")%>" id=${namespace}-tool-button-copy><span class="mif-files-empty"></span></button>
@@ -2365,8 +2523,7 @@
                 }
             %>
             <%
-                if (data.hasSelection())
-                {
+                if (data.hasSelection()) {
             %>
             <div class="toolbar-section">
                 <button class="toolbar-button" type="button" title="<%=listProperties.getLanguage("SelectOrUnselect")%>" onclick="${namespace}_toggleSelect()" id=${namespace}-selectAll><span class="mif-table"></span></button>
@@ -2378,8 +2535,7 @@
                 <button class="toolbar-button" type="button" title="<%=listProperties.getLanguage("downloadCSV")%>" onclick="${namespace}_downloadFile()"><span class="text-light text-small">CSV</span></button>
 
                 <%
-                    if (data.hasEmailButton())
-                    {
+                    if (data.hasEmailButton()) {
                 %>
                 <button class="toolbar-button" type="button" title="<%=listProperties.getLanguage("email")%>" onclick="${namespace}_downloadFileEmail()" id=${namespace}-email-button><span class="mif-envelop"></span></button>
                     <%
@@ -2388,8 +2544,7 @@
             </div>
 
             <%
-                if (data.hasCustomFilterButton())
-                {
+                if (data.hasCustomFilterButton()) {
             %>
 
             <div class="toolbar-section">
@@ -2401,8 +2556,7 @@
             %>
 
             <%
-                if (data instanceof IDeviceSynchronizable)
-                {
+                if (data instanceof IDeviceSynchronizable) {
             %>
             <div class="toolbar-section">
                 <button class="toolbar-button" type="button" title="<%=listProperties.getLanguage("deviceSync")%>" onclick="deviceSync_${namespace}()" id=${namespace}-button-deviceSync><span class="mif-embed"></span></button>
@@ -2413,8 +2567,7 @@
             <%
                 String toolbarPath = data.toolbarOutputJsp();
 
-                if (!toolbarPath.equals(""))
-                {
+                if (!toolbarPath.equals("")) {
                     request.setAttribute("properties", listProperties);
 
                     pageContext.include(toolbarPath);
@@ -2422,8 +2575,7 @@
             %>
         </div>
         <%
-            if (data.hasCustomFilterButton())
-            {
+            if (data.hasCustomFilterButton()) {
         %>
         <h3 class="text-light"><%=listProperties.getLanguage("searchBy")%></h3>
         <%
@@ -2437,6 +2589,29 @@
 
                 data.outputFilteringHtml(listProperties, out);
             %>
+            <div class="row cells5">
+
+                <!-- Created By -->
+                <div class="cell">
+                    <b>Created By</b>
+                    <div id="creatorTree" name="jobsheet_creator_id" class="tree-container">
+                        <div class="treeview" data-role="treeview">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="cell">
+                    <b>Job Sheet Status Type</b>
+                    <div id="statusTree" name="jobsheet_status_type_id" class="tree-container">
+                        <div class="treeview" data-role="treeview">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <div class="row cells2">
                 <div class="cell">
                     <div class="list-show-result-control">
@@ -2451,8 +2626,7 @@
                 </div>
                 <div class="cell">
                     <%
-                        if (data.hasSearchBox())
-                        {
+                        if (data.hasSearchBox()) {
                     %>
                     <div class="list-search-control place-right">
                         <div class="input-control text full-size" style="margin: 0">
@@ -2466,6 +2640,8 @@
                 </div>
             </div>
         </div>
+        <!-- 🔥 ADD THIS BLOCK -->
+
         <table class="dataTable striped border bordered hovered" cellpadding="0" cellspacing="0" border="0" id=${namespace}-result-table>
             <thead>
 
@@ -2484,7 +2660,7 @@
                             <div class="row cells1" id="header1">
                                 <div class="cell">
                                     <label>Customer</label>
-<!--                                    <span style="color: red; font-weight: bold"> *</span>-->
+                                    <!--                                    <span style="color: red; font-weight: bold"> *</span>-->
                                     <div class="input-control select full-size">
                                         <select name="dropdownCustomer" id="dropdownCustomerId">
                                             <option value="0">- Customer -</option>
@@ -2499,9 +2675,9 @@
                                 <div class="cell">
                                     <label>Company Name</label>
                                     <span style="color: red; font-weight: bold"> *</span>
-<!--                                    <div class="input-control text full-size">
-                                        <input type="text" name="company_name" maxlength="300" placeholder="">
-                                    </div>-->
+                                    <!--                                    <div class="input-control text full-size">
+                                                                            <input type="text" name="company_name" maxlength="300" placeholder="">
+                                                                        </div>-->
                                     <div class="input-control textarea full-size">
                                         <textarea name="company_name" maxlength="255" rows="3" placeholder=""></textarea>
                                     </div>
@@ -2514,8 +2690,6 @@
                                     <div class="input-control textarea full-size">
                                         <textarea name="billing_address" maxlength="255" rows="3" placeholder=""></textarea>
                                     </div>
-                                </div>
-                            </div>
                             <div class="row cells2">
                                 <div class="cell">
                                     <label>Customer Name</label>
@@ -2529,6 +2703,8 @@
                                     <span style="color: red; font-weight: bold"> *</span>
                                     <div class="input-control text full-size">
                                         <input type="text" name="designation" maxlength="300" placeholder="">
+                                </div>
+                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -2598,16 +2774,16 @@
                                     <div class="input-control text full-size">
                                         <input type="text" name="cost_centre" maxlength="300" placeholder="">
                                     </div>
-<!--                                    <label>Cost Centre</label>
-                                    <span style="color: red; font-weight: bold"> *</span>
-                                    <div class="input-control select full-size">
-                                        <select name="dropdownCostCentre" id="dropdownCostCentreId">
-                                            <option value="0">- Cost Centre -</option>
-                                            <%
-                                                //resusCostCentreDropDown.outputHTML(out, userProperties);
-                                            %>
-                                        </select>
-                                    </div>-->
+                                    <!--                                    <label>Cost Centre</label>
+                                                                        <span style="color: red; font-weight: bold"> *</span>
+                                                                        <div class="input-control select full-size">
+                                                                            <select name="dropdownCostCentre" id="dropdownCostCentreId">
+                                                                                <option value="0">- Cost Centre -</option>
+                                    <%
+                                        //resusCostCentreDropDown.outputHTML(out, userProperties);
+                                    %>
+                                </select>
+                            </div>-->
                                 </div>
                                 <div class="cell">
                                     <label>Order Type</label>
@@ -2615,8 +2791,7 @@
                                     <div class="input-control select full-size">
                                         <select name="dropdownOrderType" id="dropdownOrderTypeId">
                                             <option value="0">- Order Type -</option>
-                                            <%
-                                                resusOrderTypeDropDown.outputHTML(out, listProperties);
+                                            <%                                                resusOrderTypeDropDown.outputHTML(out, listProperties);
                                             %>
                                         </select>
                                     </div>
@@ -2679,7 +2854,7 @@
                 </div>
             </div>
         </div>
-            
+
         <div data-role="dialog" id="signoff-dialog" class="padding20" data-close-button="true" data-width="600" data-height="200" data-overlay="true" data-background="bg-lightOlive" data-color="fg-white">
             <h1 id=signoff-dialog-title class="text-light"></h1>
             <p id="signoff-dialog-content"></p>
